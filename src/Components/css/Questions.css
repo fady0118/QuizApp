@@ -1,11 +1,27 @@
-.questionsList{
+.questionsPage {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: flex-start;
     align-items: center;
 }
 
-.QuestionCard{
-    margin: 1rem 0;
-    border: thin solid hsla(0, 0%, 77%, 0.582);
-    border-radius: 0.5rem;
+.questionsMap {
+    display: inline-block;
+    margin-right: 2rem;
+}
+.questionMapElement{
+text-transform: capitalize;
+}
+
+.questionContainer {
+
+}
+.questionContainer .button{
+    padding: 1% 2%;
+}
+.questionBody{
+
+}
+.answerRadio{
+
 }

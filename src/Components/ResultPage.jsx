@@ -5,11 +5,12 @@ const ResultPage = () => {
   const location = useLocation();
   const { answers, questions } = location.state || {};
   const numberOfQuestions = questions.length;
-  console.log("numberOfQuestions", numberOfQuestions);
+  console.log("Questions", questions);
+  console.log('answers',answers);
   const checkAnswer = (question, selectedAnswer) => {
     console.log(question);
     console.log(selectedAnswer);
-    if (selectedAnswer.selectedAnswer === question.correct_answer) {
+    if (selectedAnswer === question.correct_answer) {
       return true;
     } else {
       return false;
@@ -17,15 +18,15 @@ const ResultPage = () => {
   };
   return (
     <div className="resultPage">
-      {questions.map((question,index) => {
+      {questions.map((question) => {
         const questionResult = checkAnswer(
           question,
-          answers[index],
+          answers[question.question],
         );
         return (
           <div className="answer" key={question.question}>
             <p>{question.question}</p>
-            <p>{answers[index].selectedAnswer}</p>
+            <p>{answers[question.question]}</p>
             {questionResult ? (
               <p style={{ color: "green" }}>Correct Answer</p>
             ) : (
@@ -39,7 +40,6 @@ const ResultPage = () => {
             )}
           </div>
         );
-        // console.log(answers.find(answer=>answer.question === question.question))
       })}
     </div>
   );

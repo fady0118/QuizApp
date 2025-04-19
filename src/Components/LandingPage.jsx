@@ -5,22 +5,25 @@ import { CiUser } from "react-icons/ci";
 
 const LandingPage = () => {
   const [userName, setUserName] = useState("");
-  const [numOfQuestions, setNumOfQuestions] = useState(0);
+  const [numOfQuestions, setNumOfQuestions] = useState(1);
   const [selectedOperation, setSelectedOperation] = useState("");
 
-  const operations = [
-    "Addition",
-    "Subtraction",
-    "Multiplication",
-    "Division",
-    "All",
-  ];
+  const operations = {
+      "Art":25,
+      "Music": 12,
+      "Science: Computers":18,
+      "Science: Mathematics":19,
+      "Japanese Anime & Manga": 31,
+      "Mythology":20,
+      "Video Games": 15,
+  };
 
   const navigate = useNavigate();
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    navigate("/Questions", {
+    if(userName && selectedOperation){
+      navigate("/Questions", {
       state: {
         userName: userName,
         questionsNum: numOfQuestions,
@@ -30,6 +33,13 @@ const LandingPage = () => {
     setUserName("");
     setNumOfQuestions(0);
     setSelectedOperation("");
+    }else{
+      const FormElements = document.querySelectorAll('.input');
+      let user_operation = [...FormElements];
+      user_operation.splice(1,1);
+      user_operation.forEach(element=>element.style.border='thin solid #a52a2a')
+    }
+    
   };
   return (
     <form className="LandingContiner" onSubmit={(e) => handleSubmit(e)}>
@@ -39,6 +49,7 @@ const LandingPage = () => {
           <input
             type="text"
             value={userName}
+            id="username"
             onChange={(e) => setUserName(e.target.value)}
             placeholder="Enter user name..."
           />
@@ -47,29 +58,42 @@ const LandingPage = () => {
       </label>
       <label>
         Enter Number Of Questions
-        <input
-          className="input"
-          type="number"
+        <select
           name="questions"
           id="questions"
+          className="input"
           value={numOfQuestions}
           onChange={(e) => setNumOfQuestions(e.target.value)}
-        />
+        >
+          {Array.from({ length: 15 }, (_, i) => (
+            <option key={i + 1} value={i + 1}>
+              {i + 1}
+            </option>
+          ))}
+        </select>
       </label>
       <label>
-        Select Math Operation
+        Select Quiz Type
         <select
           className="input"
           name="operations"
           id="operations"
           onChange={(e) => setSelectedOperation(e.target.value)}
         >
-          <option value="" hidden disabled>
-            select math operation
+          <option value="" selected hidden disabled>
+          ...
           </option>
-          {operations.map((operation,index) => {
-            return <option key={index} value={operation}>{operation}</option>;
-          })}
+          {/* {operations.map((operation, index) => {
+            return (
+              <option key={index} value={operation}>
+                {operation}
+              </option>
+            );
+          })} */}
+          {Object.entries(operations).map(([key, value])=>(
+            <option key={key} value={value}>{key}</option>
+          ))
+          }
         </select>
       </label>
       {/* <button type="submit">Submit</button> */}
