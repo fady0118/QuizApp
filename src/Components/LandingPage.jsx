@@ -2,13 +2,14 @@ import React, { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import "./css/LandingPage.css";
 import { CiUser } from "react-icons/ci";
+import { PiStarFourFill } from "react-icons/pi";
 
 const LandingPage = () => {
   const [userName, setUserName] = useState("");
   const [numOfQuestions, setNumOfQuestions] = useState(1);
-  const [selectedOperation, setSelectedOperation] = useState("");
+  const [selectedCategory, setSelectedOperation] = useState("");
 
-  const operations = {
+  const Category = {
       "Art":25,
       "Music": 12,
       "Science: Computers":18,
@@ -22,46 +23,48 @@ const LandingPage = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if(userName && selectedOperation){
+    if(userName && selectedCategory){
       navigate("/Questions", {
       state: {
         userName: userName,
         questionsNum: numOfQuestions,
-        operation: selectedOperation,
+        categoryCode: selectedCategory,
+        categoryName: Object.keys(Category).find(key=>Category[key] == selectedCategory),
       },
     });
     setUserName("");
     setNumOfQuestions(0);
     setSelectedOperation("");
     }else{
-      const FormElements = document.querySelectorAll('.input');
+      const FormElements = document.querySelectorAll('.LandingContainer label');
       let user_operation = [...FormElements];
       user_operation.splice(1,1);
-      user_operation.forEach(element=>element.style.border='thin solid #a52a2a')
+      user_operation.forEach(element=>element.style.color='#ffdd7b')
     }
     
   };
   return (
-    <form className="LandingContiner" onSubmit={(e) => handleSubmit(e)}>
+    <form className="LandingContainer" onSubmit={(e) => handleSubmit(e)}>
       <label>
         Enter User Name
-        <div className="input">
+        <div className="inputdiv">
           <input
             type="text"
             value={userName}
             id="username"
             onChange={(e) => setUserName(e.target.value)}
-            placeholder="Enter user name..."
+            placeholder="..."
           />
-          <CiUser />
+          {/* <CiUser /> */}
         </div>
       </label>
       <label>
         Enter Number Of Questions
+        <div className="inputdiv">
         <select
           name="questions"
           id="questions"
-          className="input"
+          className="input droplist"
           value={numOfQuestions}
           onChange={(e) => setNumOfQuestions(e.target.value)}
         >
@@ -71,11 +74,13 @@ const LandingPage = () => {
             </option>
           ))}
         </select>
+        </div>
       </label>
       <label>
         Select Quiz Type
+        <div className="inputdiv">
         <select
-          className="input"
+          className="input droplist"
           name="operations"
           id="operations"
           onChange={(e) => setSelectedOperation(e.target.value)}
@@ -83,22 +88,33 @@ const LandingPage = () => {
           <option value="" selected hidden disabled>
           ...
           </option>
-          {/* {operations.map((operation, index) => {
-            return (
-              <option key={index} value={operation}>
-                {operation}
-              </option>
-            );
-          })} */}
-          {Object.entries(operations).map(([key, value])=>(
+          
+          {Object.entries(Category).map(([key, value])=>(
             <option key={key} value={value}>{key}</option>
           ))
           }
         </select>
+        </div>
       </label>
-      {/* <button type="submit">Submit</button> */}
+      
       <button className="button" type="submit">
-        Submit
+        <span style={{position:"relative",zIndex:1}}>Submit</span>
+        {/* Submit */}
+        <div className="star star-1">
+          <PiStarFourFill />
+        </div>
+        <div className="star star-2">
+          <PiStarFourFill />
+        </div>
+        <div className="star star-3">
+          <PiStarFourFill />
+        </div>
+        <div className="star star-4">
+          <PiStarFourFill />
+        </div>
+        <div className="star star-5">
+          <PiStarFourFill />
+        </div>
       </button>
     </form>
   );

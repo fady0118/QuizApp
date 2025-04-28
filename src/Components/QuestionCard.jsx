@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { memo } from "react";
 import "./css/Questions.css";
 const QuestionCard = ({ question, userAnswer, onAnswer }) => {
   const allAnswers = [...question.incorrect_answers, question.correct_answer];
@@ -27,4 +27,4 @@ const QuestionCard = ({ question, userAnswer, onAnswer }) => {
   );
 };
 
-export default QuestionCard;
+export default memo(QuestionCard);

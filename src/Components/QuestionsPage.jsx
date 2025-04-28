@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import QuestionCard from "./QuestionCard";
 import ResultPage from "./ResultPage";
 import "./css/Questions.css";
 import { FaCheckCircle } from "react-icons/fa";
 import { FaRegCheckCircle } from "react-icons/fa";
+import Timer from "./Timer";
 
 const decodeHtmlEntities = (str) => {
   const textArea = document.createElement("textarea");
@@ -15,16 +16,20 @@ const decodeHtmlEntities = (str) => {
 const QuestionsPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { userName, questionsNum, operation } = location.state || {};
-  console.log(userName, questionsNum, operation);
+  const { userName, questionsNum, categoryCode, categoryName } =
+    location.state || {};
   const [questions, setQuestions] = useState([]);
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [userAnswers, setUserAnswers] = useState({});
 
+  const allowedTime = questionsNum * 30 * 1000; // quiz time in milliseconds
+  const [timeLeft, setTimeLeft] = useState(allowedTime);
+  const [isLargeScreen, setIsLargeScreen] = useState(false);
+
   useEffect(() => {
     const fetchQuestions = async () => {
-      const apiUrl = `https://opentdb.com/api.php?amount=${questionsNum}&category=${operation}&type=multiple`;
+      const apiUrl = `https://opentdb.com/api.php?amount=${questionsNum}&category=${categoryCode}&type=multiple`;
       try {
         const response = await fetch(apiUrl);
         const data = await response.json();
@@ -53,11 +58,18 @@ const QuestionsPage = () => {
     return decodedQuestions;
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = useCallback(() => {
     navigate("/Result", {
-      state: { answers: userAnswers, questions: questions },
+      state: {
+        userName: userName,
+        category: categoryName,
+        answers: userAnswers,
+        questions: questions,
+        timeleft: timeLeft,
+        allowedTime: allowedTime,
+      },
     });
-  };
+  }, [userAnswers, questions]);
 
   const handleAnswer = (question, answer) => {
     setUserAnswers((prevAnswers) => ({
@@ -73,50 +85,84 @@ const QuestionsPage = () => {
   const handleSkip = () => {
     handleNext();
   };
+  useEffect(()=>{
+    const mediaQuery = window.matchMedia('(min-width:768px)');
+    const handleChange = () => setIsLargeScreen(mediaQuery.matches);
 
+    mediaQuery.addEventListener('change', handleChange);
+    handleChange();
+
+    return ()=> mediaQuery.removeEventListener('change', handleChange);
+  },[])
   return (
     <div className="questionsPage">
+      
+      <div className="questions">
+        <div className="questionContainer">
+          {questions && questions.length > 0 ? (
+            <>
+              <QuestionCard
+                question={questions[currentIndex]}
+                userAnswer={userAnswers[questions[currentIndex].question]}
+                onAnswer={(answer) => {
+                  handleAnswer(questions[currentIndex].question, answer);
+                }}
+              />
+
+              {currentIndex <= questions.length - 2 ? (
+                <>
+                  {questions[currentIndex] &&
+                  userAnswers[questions[currentIndex].question] ? (
+                    <button className="button" onClick={handleNext}>
+                      Next
+                    </button>
+                  ) : (
+                    <button className="button" onClick={handleSkip}>
+                      Skip
+                    </button>
+                  )}
+                </>
+              ) : (
+                <>
+                  <button className="button" onClick={handleSubmit}>
+                    Submit
+                  </button>
+                </>
+              )}
+            </>
+          ) : (
+            <p>Loading questions...</p>
+          )}
+        </div>
+      </div>
+      <div className="nav_n_time">
+        <Timer
+        timeLeft={timeLeft}
+        allowedTime={allowedTime}
+        setLeftTime={setTimeLeft}
+        submit={handleSubmit}
+      />
       <div className="questionsMap">
+        
         {Array.from({ length: questionsNum }, (_, i) => (
           <div
             key={i}
-            className="questionMapElement"
+            className={`questionMapElement ${
+              currentIndex === i ? "active-question" : ""
+            }`}
             onClick={() => setCurrentIndex(i)}
           >
-            {questions[i] && userAnswers[questions[i].question]?<FaCheckCircle style={{ color: "green"}}/>:<FaRegCheckCircle/>}question-{i + 1}
+            {questions[i] && userAnswers[questions[i].question] ? (
+              <FaCheckCircle style={{ color: "#7d6aee" }} />
+            ) : (
+              <FaRegCheckCircle />
+            )}
+            question-{i + 1}
           </div>
         ))}
       </div>
-      <div className="questionContainer">
-        {questions && questions.length > 0 ? (
-          <>
-            <QuestionCard
-              question={questions[currentIndex]}
-              userAnswer = {userAnswers[questions[currentIndex].question]}
-              onAnswer={(answer) => {
-                handleAnswer(questions[currentIndex].question, answer);
-              }}
-            />
-
-            {currentIndex <= questions.length - 2 ? (
-              <>
-                {questions[currentIndex] &&
-                userAnswers[questions[currentIndex].question] ? (
-                  <button className="button" onClick={handleNext}>Next</button>
-                ) : (
-                  <button className="button" onClick={handleSkip}>Skip</button>
-                )}
-              </>
-            ) : (
-              <>
-                <button className="button" onClick={handleSubmit}>Submit</button>
-              </>
-            )}
-          </>
-        ) : (
-          <p>Loading questions...</p>
-        )}
       </div>
+      
     </div>
   );
 };

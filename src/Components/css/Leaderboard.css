@@ -1,0 +1,22 @@
+.leaderboardContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.LeaderboardResult {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: content-box;
+    width: 15rem;
+    padding: 0.5rem 2rem;
+    background-color: rgba(64, 65, 143, 0.104);
+    border-radius: 1rem;
+    text-transform: capitalize;
+}
+.leaderboardResultData{
+    width: 10rem;
+}

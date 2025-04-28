@@ -1,0 +1,95 @@
+.resultPage {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+}
+
+.QuizCard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 1.5rem;
+    /* border: thin solid rgba(113, 158, 197, 0.256); */
+    border-radius: 0.5rem;
+    width:18rem;
+    background-color: #3f3f601c;
+    color: #d9d8f4;
+}
+
+.ResultData {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+}
+
+.QuizCard p {
+    margin: 0;
+    /* color: #d9d8f4; */
+}
+.gradeContainer{
+    height: 5rem;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#GradeSvgContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.25rem;
+}
+
+#detailedGradeContainer {
+    display: none;
+    width: 100%;
+
+}
+.detailedGradeFlexContainer{
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+#GradeSvgContainer,
+#detailedGradeContainer {
+padding: 0.5rem;
+border-radius: 0.5rem;
+height: 100%;
+}
+
+#GradeSvgContainer:hover,
+#detailedGradeContainer:hover {
+    cursor: pointer;
+    background-color: #8c88ff0e;
+}
+
+.dateDiv{
+    width: 100%;
+}
+
+.dateDiv,.dateDiv *{
+    font-size: 0.75rem;
+}
+
+
+.detailedResults {
+    width: 90%;
+}
+
+.detailedResults .answer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin: 1rem;
+}
+
+.detailedResults .answer>p {
+    margin: 0.25rem;
+}
+
+.detailedResults .answer span {
+    margin: 0 0.25rem;
+}
