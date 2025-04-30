@@ -8,13 +8,13 @@ const msToTime = (duration) => {
   minutes = minutes < 10 ? "0" + minutes : minutes;
   hours = hours < 10 ? "0" + hours : hours;
 
-  return hours + ":" + minutes + ":" + seconds + "." + milliseconds;
+  return hours + ":" + minutes + ":" + seconds ;
   // return minutes + ":" + seconds + "." + milliseconds;
 };
 const TimerBarCircular = ({ timeLeft, allowedTime }) => {
   const percentage = (timeLeft / allowedTime) * 100; // Remaining percentage
-  const radius = 50; // Radius of the circle
-  const strokeWidth = 10; // Width of the circular stroke
+  const radius = 60; // Radius of the circle
+  const strokeWidth = 3; // Width of the circular stroke
   const normalizedRadius = radius - strokeWidth / 2; // Normalize radius for the stroke
   const circumference = 2 * Math.PI * normalizedRadius; // Circumference of the circle
   const strokeDashoffset = circumference - (percentage / 100) * circumference; // Calculate offset for progress
@@ -26,18 +26,25 @@ const TimerBarCircular = ({ timeLeft, allowedTime }) => {
   };
 
   return (
-    <svg height={radius * 2} width={radius * 2}>
-      <circle
+    <svg height={radius * 2} width={radius * 2}  style={{zIndex:'2'}}>
+      <defs>
+        <linearGradient id="TimergradientStroke" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color='#fff9a8' />
+          <stop offset="100%" stop-color='#e3a381' />
+        </linearGradient>
+      </defs>
+
+      {/* <circle
         stroke="lightgray" // Background circle
         fill="transparent"
         strokeWidth={strokeWidth}
         r={normalizedRadius}
         cx={radius}
         cy={radius}
-      />
+      /> */}
       <circle
-        stroke={getColor()} // Dynamic color for the progress
-        fill="transparent"
+        stroke="url(#TimergradientStroke)" // Dynamic color for the progress
+        fill="none"
         strokeWidth={strokeWidth}
         r={normalizedRadius}
         cx={radius}
@@ -51,11 +58,11 @@ const TimerBarCircular = ({ timeLeft, allowedTime }) => {
       />
       <text
         x="50%"
-        y="50%"
+        y="80%"
         textAnchor="middle"
-        dominantBaseline="middle"
-        fontSize="16px"
-        fill={getColor()}
+        dominantBaseline="top"
+        fontSize={radius/5}
+        fill="silver"
       >
         {msToTime(timeLeft)}
       </text>

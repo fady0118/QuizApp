@@ -85,8 +85,8 @@ const ResultPage = () => {
   return (
     <div className="resultPage">
       <QuizResultCard Result={resultObject} saveResult={saveResult}/>
-      <button onClick={() => setDisplayResults((prevState) => !prevState)}>
-        {displayResults ? "Hide Results" : "Display Results"}
+      <button style={{}} className="Qbutton" onClick={() => setDisplayResults((prevState) => !prevState)}>
+        {displayResults ? <div>Hide Results</div>: <div>Display Results</div>}
       </button>
       <DetailedResults results={results} displayResults={displayResults} />
     </div>

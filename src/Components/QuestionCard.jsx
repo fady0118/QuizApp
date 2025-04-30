@@ -11,8 +11,8 @@ const QuestionCard = ({ question, userAnswer, onAnswer }) => {
   };
   return (
     <div className="questionBody">
-      <div className="questionHead"><div>{question.question}</div>
-      <img src={borderLine} style={{width:'95%',height:'1.2rem'}} alt="" /></div>
+      <div className="containerHead"><div>{question.question}</div>
+      <img src={borderLine} style={{width:'95%',}} alt="" /></div>
       {allAnswers.map((answer, index) => {
         return (
           <div className="answerRadio" key={index}>

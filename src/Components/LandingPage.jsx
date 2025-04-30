@@ -136,9 +136,10 @@ const LandingPage = () => {
         </div>
       </label>
       
-      <button className="button" type="submit">
-        <span style={{position:"relative",zIndex:1}}>Submit</span>
-        {/* Submit */}
+      <button className="Qbutton" type="submit">
+        <div style={{fontSize:'0.75rem'}}>Submit</div>
+        {/* <span style={{position:"relative",zIndex:1}}>Submit</span> */}
+        
         {/* <div className="star star-1">
           <PiStarFourFill />
         </div>

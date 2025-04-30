@@ -6,28 +6,56 @@
 }
 
 .QuizCard {
+    background-color: var(--input-color);
+    width: fit-content;
+    margin: calc(var(--container-scale)/10);
+    padding: calc(var(--container-scale)/8) calc(var(--container-scale)/6);
+    border-radius: calc(var(--container-scale)/15);
+    box-sizing: border-box;
+    outline: 1px solid var(--border-color);
+    outline-offset: -0.4rem;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    gap: 1rem;
+    color: #d9d8f4;
+
+    /* display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
     padding: 0.75rem 1.5rem;
-    /* border: thin solid rgba(113, 158, 197, 0.256); */
+    border: thin solid rgba(113, 158, 197, 0.256);
     border-radius: 0.5rem;
     width:18rem;
     background-color: #3f3f601c;
-    color: #d9d8f4;
+    color: #d9d8f4; */
+}
+.resultHeadContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.resultHead{
+    text-align: center;
+  color: var(--highlighted-color);
+  padding: 0.25rem;
+  font-size: calc(var(--container-scale)/10);
 }
 
 .ResultData {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    width: 100%;
+    width: 90%;
+    font-size: var(--input-font-size);
+    gap: 0.35rem;
 }
 
 .QuizCard p {
     margin: 0;
-    /* color: #d9d8f4; */
 }
 .gradeContainer{
     height: 5rem;
@@ -71,7 +99,7 @@ height: 100%;
 }
 
 .dateDiv,.dateDiv *{
-    font-size: 0.75rem;
+    font-size: 0.6rem;
 }
 
 

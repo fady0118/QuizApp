@@ -1,6 +1,9 @@
 import React from "react";
 import "./css/results.css";
-const QuizResultCard = ({ Result,saveResult }) => {
+import starEdge from "../assets/starIMG.png";
+import borderLine from "../assets/borderLine-.png";
+
+const QuizResultCard = ({ Result, saveResult }) => {
   console.log(Result);
   // constants
   const percentage =
@@ -35,15 +38,59 @@ const QuizResultCard = ({ Result,saveResult }) => {
 
   return (
     <div className="QuizCard">
-      <p>
-        <strong>Quiz Results</strong>
-      </p>
+      <img
+        src={starEdge}
+        style={{
+          width: "1rem",
+          position: "absolute",
+          top: "0",
+          left: "0",
+          transform: "rotate(-90deg)",
+        }}
+      />
+      <img
+        src={starEdge}
+        style={{
+          width: "1rem",
+          position: "absolute",
+          top: "0",
+          right: "0",
+        }}
+      />
+      <img
+        src={starEdge}
+        style={{
+          width: "1rem",
+          position: "absolute",
+          bottom: "0",
+          left: "0",
+          transform: "rotate(180deg)",
+        }}
+      />
+      <img
+        src={starEdge}
+        style={{
+          width: "1rem",
+          position: "absolute",
+          bottom: "0",
+          right: "0",
+          transform: "rotate(90deg)",
+        }}
+      />
+      <div className="resultHeadContainer">
+        <p className="resultHead">Quiz Results</p>
+        <img src={borderLine} style={{width:'95%'}} alt="" />
+      </div>
+
       <div className="ResultData">
         <p>
-          <strong>Category: </strong>
+          Category:&nbsp;
           {Result.category}
         </p>
-        <p>Name: <span style={{textTransform:'capitalize'}}>{Result.userName}</span></p>
+        <p>
+          Name:&nbsp;
+          <span style={{ textTransform: "capitalize" }}>{Result.userName}</span>
+        </p>
       </div>
       <div className="gradeContainer">
         <div id="GradeSvgContainer" onClick={gradeClick}>
@@ -113,10 +160,13 @@ const QuizResultCard = ({ Result,saveResult }) => {
           </div>
         </div>
       </div>
+      
+      <button className="Qbutton" onClick={() => saveResult(Result)}>
+        <div>Save Result</div>
+      </button>
       <div className="dateDiv">
         Time: <i>{Result.timestamp}</i>
       </div>
-      <button onClick={()=>saveResult(Result)}>Save Result</button>
     </div>
   );
 };
@@ -154,7 +204,7 @@ const Gradebar = ({ percentage, title }) => {
           }}
         ></div>
       </div>
-      <span>{Math.floor(percentage)}%</span>
+      <span style={{width:'10%'}}>{Math.floor(percentage)}%</span>
     </>
   );
 };

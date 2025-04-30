@@ -1,6 +1,8 @@
-:root{
-  --qButton-height:3rem;
+:root {
+  --qButton-height: 1rem;
+  --container-scale: 10rem;
 }
+
 .questionsPage {
   display: flex;
   flex-direction: column;
@@ -37,7 +39,7 @@
 .questionsMap {
   display: flex;
   flex-direction: column;
-  background-image: linear-gradient(180deg, #1a1a1d, #1a1a1da5);
+  background-image: linear-gradient(180deg, #1a1a1d, #1a1a1dc6);
   justify-content: flex-start;
   align-items: center;
   /* border-radius: 5px; */
@@ -62,8 +64,10 @@
   /* text-align: center; */
   height: 20%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  background-color: transparent;
 }
 
 .questionMapElement {
@@ -72,6 +76,9 @@
   padding: 0.7rem 0.6rem;
   color: white;
   display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
   position: relative;
   gap: 5px;
   cursor: pointer;
@@ -80,6 +87,7 @@
   font-size: calc(var(--input-font-size)*0.9);
   width: 100%;
   box-sizing: border-box;
+
 }
 
 .questionMapElement:not(:active):hover,
@@ -108,7 +116,7 @@
 }
 
 .questionMapElement.active-question {
-  background-image: linear-gradient(to right, #342a61, transparent);
+  background-image: linear-gradient(90deg, var(--input-color) 0%, transparent 100%);
 }
 
 .questionMapElement.active-question::before {
@@ -137,9 +145,10 @@
 
 .questionContainer {
   background-color: var(--input-color);
-  width: 25rem;
-  padding: 1rem;
-  border-radius: 0.7rem;
+  width: 100%;
+  margin: calc(var(--container-scale)/6);
+  padding: calc(var(--container-scale)/10);
+  border-radius: calc(var(--container-scale)/15);
   box-sizing: border-box;
   outline: 1px solid var(--border-color);
   outline-offset: -0.4rem;
@@ -147,7 +156,8 @@
   flex-direction: column;
   align-items: center;
   position: relative;
-  margin: 0.5rem;
+  /* margin: 0.5rem; */
+
 }
 
 .questionContainer .button {
@@ -162,15 +172,17 @@
   align-items: center;
   /* gap: 0.5rem; */
   font-size: 1rem;
- 
+
 }
-.questionHead{
+
+.containerHead {
   text-align: center;
   color: var(--highlighted-color);
-  padding: 0.25rem 0;
-  font-size: 0.9rem;
-  line-height: 1.2rem;
+  padding: 0.25rem;
+  font-size: calc(var(--container-scale)/12);
+  /* line-height: 1.2rem; */
 }
+
 .answerRadio {
   width: 100%;
   margin-bottom: 0.5rem;
@@ -183,17 +195,19 @@
 .answerRadio input[type="radio"] {
   display: none;
 }
-.answerRadio input[type="radio"]:not(:checked)+label:hover{
+
+.answerRadio input[type="radio"]:not(:checked)+label:hover {
   background-color: #636a81;
-} 
+}
+
 .answerRadio label {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 70%;
   height: 1.5rem;
-  padding: 10px 20px;
-  font-size: 0.7rem;
+  padding: 0.5rem 1.25rem;
+  font-size: 0.6rem;
   overflow: hidden;
   background-color: #4b5366;
   /* border: thin solid #cccccc51; */
@@ -206,10 +220,11 @@
   background-repeat: no-repeat;
 }
 
-.answerRadio label span{
+.answerRadio label span {
   width: 70%;
   text-align: center;
 }
+
 input[type="radio"]:checked+label {
   border: 1px solid var(--highlighted-color);
   box-shadow: 0 0 0.1rem 0.15rem #2a303dac;
@@ -217,9 +232,14 @@ input[type="radio"]:checked+label {
   background-color: #636a81;
 }
 
-.Qbutton{
-  width: calc(var(--qButton-height)*2.5);
-  height: var(--qButton-height);
+.controls {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 70%;
+}
+
+.Qbutton {
   background-color: transparent;
   border: none;
   background-image: url('../../assets/buttonImg1.png');
@@ -227,12 +247,24 @@ input[type="radio"]:checked+label {
   background-repeat: no-repeat;
   background-position: center;
   color: var(--input-color);
-  font-size: var(--input-font-size);
+  font-size: calc(var(--input-font-size)*0.8);
   font-family: 'HYWenHei';
   transition: all 0.3s ease-in-out;
   position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.Qbutton:hover{
+
+.Qbutton div {
+  width: calc(var(--input-font-size)*8);
+  aspect-ratio: 3.7/1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Qbutton:hover {
   cursor: pointer;
   filter: grayscale(1.2) hue-rotate(175deg) brightness(1.15);
 }

@@ -1,3 +1,21 @@
+:root{
+    --Timer-radius:60px;
+    --Timer-scale:2.525;
+}
+.timerContainer{
+    width:calc(var(--Timer-radius)*var(--Timer-scale));
+    height: calc(var(--Timer-radius)*var(--Timer-scale));
+    background-image: url('../../assets/Timerb.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* color: linear-gradient(90deg, #fff9a8,#e3a381); */
+}
+
 
 .timeBar{
     display: inline-block;

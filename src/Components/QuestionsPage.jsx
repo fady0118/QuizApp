@@ -6,12 +6,16 @@ import "./css/Questions.css";
 import Timer from "./Timer";
 import { useRef } from "react";
 
-import { FaCheckCircle } from "react-icons/fa";
-import { FaRegCheckCircle } from "react-icons/fa";
+// import { FaCheckCircle } from "react-icons/fa";
+// import { FaRegCheckCircle } from "react-icons/fa";
 import { HiOutlineMenu } from "react-icons/hi";
 import { HiOutlineX } from "react-icons/hi";
-import { PiStarFourFill } from "react-icons/pi";
+// import { PiStarFourFill } from "react-icons/pi";
 import starEdge from "../assets/starIMG.png";
+import XYZ from "../assets/XYZ.png";
+import borderLine from "../assets/borderLine.png";
+import unchecked from "../assets/checkbox-1.png";
+import checked from "../assets/checkbox-2.png";
 
 const decodeHtmlEntities = (str) => {
   const textArea = document.createElement("textarea");
@@ -88,14 +92,14 @@ const QuestionsPage = () => {
       setCurrentIndex((prevIndex) => prevIndex + 1);
     }
   };
-  const handleBack = ()=>{
-    if(currentIndex>0){
-      setCurrentIndex((prevIndex)=>prevIndex - 1);
+  const handleBack = () => {
+    if (currentIndex > 0) {
+      setCurrentIndex((prevIndex) => prevIndex - 1);
     }
-  }
-  const handleSkip = () => {
-    handleNext();
   };
+  // const handleSkip = () => {
+  //   handleNext();
+  // };
   useEffect(() => {
     const mediaQuery = window.matchMedia("(min-width:768px)");
     const handleChange = () => setIsLargeScreen(mediaQuery.matches);
@@ -109,9 +113,7 @@ const QuestionsPage = () => {
   const sideBarRef = useRef(null);
   const [isMoved, setIsMoved] = useState(false);
   const toggleSideBar = () => {
-    console.log("toggleSideBar");
     if (sideBarRef.current) {
-      console.log("sideBarRef.current is true");
       const newTransform = isMoved ? "translateX(100%)" : "translateX(0)";
       sideBarRef.current.style.transform = newTransform;
       setIsMoved(!isMoved);
@@ -130,10 +132,18 @@ const QuestionsPage = () => {
               }`}
               onClick={() => setCurrentIndex(i)}
             >
+              {/* <img style={{width:'1rem',height:'1rem'}} src={checked}></img>:
+              <img style={{width:'1rem',height:'1rem'}} src={unchecked}></img> */}
               {questions[i] && userAnswers[questions[i].question] ? (
-                <FaCheckCircle style={{ color: "#7d6aee" }} />
+                <img
+                  style={{ width: "1rem", height: "1rem" }}
+                  src={checked}
+                ></img>
               ) : (
-                <FaRegCheckCircle />
+                <img
+                  style={{ width: "1rem", height: "1rem" }}
+                  src={unchecked}
+                ></img>
               )}
               question-{i + 1}
             </div>
@@ -148,7 +158,20 @@ const QuestionsPage = () => {
             <div id="closeSideBar" onClick={toggleSideBar}>
               <HiOutlineX fontSize={"1.2rem"} />
             </div>
-            <div className="questionmapXYZ">XYZ</div>
+            <div className="questionmapXYZ">
+              <img
+                src={XYZ}
+                style={{
+                  width: "25%",
+                  backgroundImage:
+                    "radial-gradient(#da9e71cd 0%, transparent 75%)",
+                }}
+              />
+              <img
+                src={borderLine}
+                style={{ width: "90%", marginTop: "0.25rem" }}
+              ></img>
+            </div>
             <div>
               {Array.from({ length: questionsNum }, (_, i) => (
                 <div
@@ -159,9 +182,23 @@ const QuestionsPage = () => {
                   onClick={() => setCurrentIndex(i)}
                 >
                   {questions[i] && userAnswers[questions[i].question] ? (
-                    <FaCheckCircle style={{ color: "#7d6aee" }} />
+                    <img
+                      style={{
+                        width: "0.8rem",
+                        height: "0.8rem",
+                        margin: "0 0.25rem",
+                      }}
+                      src={checked}
+                    ></img>
                   ) : (
-                    <FaRegCheckCircle />
+                    <img
+                      style={{
+                        width: "0.8rem",
+                        height: "0.8rem",
+                        margin: "0 0.25rem",
+                      }}
+                      src={unchecked}
+                    ></img>
                   )}
                   question-{i + 1}
                 </div>
@@ -235,19 +272,25 @@ const QuestionsPage = () => {
                       Skip
                     </button>
                   )} */}
-                  {questions[currentIndex] && currentIndex<=0?(<button className="Qbutton" onClick={handleNext}>Next</button>):(<div className="controls">
-                    <button className="Qbutton" onClick={handleBack}>
-                      Back
-                    </button>
+                  {questions[currentIndex] && currentIndex <= 0 ? (
                     <button className="Qbutton" onClick={handleNext}>
-                      Next
+                      <div>Next</div>
                     </button>
-                  </div>)}
+                  ) : (
+                    <div className="controls">
+                      <button className="Qbutton" onClick={handleBack}>
+                        <div>Back</div>
+                      </button>
+                      <button className="Qbutton" onClick={handleNext}>
+                        <div>Next</div>
+                      </button>
+                    </div>
+                  )}
                 </>
               ) : (
                 <>
                   <button className="Qbutton" onClick={handleSubmit}>
-                    Submit
+                    <div>Submit</div>
                   </button>
                 </>
               )}
