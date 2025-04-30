@@ -1,11 +1,17 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import QuestionCard from "./QuestionCard";
-import ResultPage from "./ResultPage";
+// import ResultPage from "./ResultPage";
 import "./css/Questions.css";
+import Timer from "./Timer";
+import { useRef } from "react";
+
 import { FaCheckCircle } from "react-icons/fa";
 import { FaRegCheckCircle } from "react-icons/fa";
-import Timer from "./Timer";
+import { HiOutlineMenu } from "react-icons/hi";
+import { HiOutlineX } from "react-icons/hi";
+import { PiStarFourFill } from "react-icons/pi";
+import starEdge from "../assets/starIMG.png";
 
 const decodeHtmlEntities = (str) => {
   const textArea = document.createElement("textarea");
@@ -82,23 +88,131 @@ const QuestionsPage = () => {
       setCurrentIndex((prevIndex) => prevIndex + 1);
     }
   };
+  const handleBack = ()=>{
+    if(currentIndex>0){
+      setCurrentIndex((prevIndex)=>prevIndex - 1);
+    }
+  }
   const handleSkip = () => {
     handleNext();
   };
-  useEffect(()=>{
-    const mediaQuery = window.matchMedia('(min-width:768px)');
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width:768px)");
     const handleChange = () => setIsLargeScreen(mediaQuery.matches);
 
-    mediaQuery.addEventListener('change', handleChange);
+    mediaQuery.addEventListener("change", handleChange);
     handleChange();
 
-    return ()=> mediaQuery.removeEventListener('change', handleChange);
-  },[])
+    return () => mediaQuery.removeEventListener("change", handleChange);
+  }, []);
+
+  const sideBarRef = useRef(null);
+  const [isMoved, setIsMoved] = useState(false);
+  const toggleSideBar = () => {
+    console.log("toggleSideBar");
+    if (sideBarRef.current) {
+      console.log("sideBarRef.current is true");
+      const newTransform = isMoved ? "translateX(100%)" : "translateX(0)";
+      sideBarRef.current.style.transform = newTransform;
+      setIsMoved(!isMoved);
+    }
+  };
+
   return (
     <div className="questionsPage">
-      
+      {isLargeScreen ? (
+        <div className="questionsMap">
+          {Array.from({ length: questionsNum }, (_, i) => (
+            <div
+              key={i}
+              className={`questionMapElement ${
+                currentIndex === i ? "active-question" : ""
+              }`}
+              onClick={() => setCurrentIndex(i)}
+            >
+              {questions[i] && userAnswers[questions[i].question] ? (
+                <FaCheckCircle style={{ color: "#7d6aee" }} />
+              ) : (
+                <FaRegCheckCircle />
+              )}
+              question-{i + 1}
+            </div>
+          ))}
+        </div>
+      ) : (
+        <>
+          <div id="sidebarbutton" onClick={toggleSideBar}>
+            <HiOutlineMenu fontSize={"1.2rem"} />
+          </div>
+          <div className="questionsMap" ref={sideBarRef}>
+            <div id="closeSideBar" onClick={toggleSideBar}>
+              <HiOutlineX fontSize={"1.2rem"} />
+            </div>
+            <div className="questionmapXYZ">XYZ</div>
+            <div>
+              {Array.from({ length: questionsNum }, (_, i) => (
+                <div
+                  key={i}
+                  className={`questionMapElement ${
+                    currentIndex === i ? "active-question" : ""
+                  }`}
+                  onClick={() => setCurrentIndex(i)}
+                >
+                  {questions[i] && userAnswers[questions[i].question] ? (
+                    <FaCheckCircle style={{ color: "#7d6aee" }} />
+                  ) : (
+                    <FaRegCheckCircle />
+                  )}
+                  question-{i + 1}
+                </div>
+              ))}
+            </div>
+          </div>
+        </>
+      )}
+
       <div className="questions">
         <div className="questionContainer">
+          <img
+            src={starEdge}
+            style={{
+              width: "1rem",
+              position: "absolute",
+              top: "0",
+              left: "0",
+              transform: "rotate(-90deg)",
+            }}
+          />
+          <img
+            src={starEdge}
+            style={{
+              width: "1rem",
+              position: "absolute",
+              top: "0",
+              right: "0",
+            }}
+          />
+          <img
+            src={starEdge}
+            style={{
+              width: "1rem",
+              position: "absolute",
+              bottom: "0",
+              left: "0",
+              transform: "rotate(180deg)",
+            }}
+          />
+          <img
+            src={starEdge}
+            style={{
+              width: "1rem",
+              position: "absolute",
+              bottom: "0",
+              right: "0",
+              transform: "rotate(90deg)",
+            }}
+          />
+
           {questions && questions.length > 0 ? (
             <>
               <QuestionCard
@@ -111,20 +225,28 @@ const QuestionsPage = () => {
 
               {currentIndex <= questions.length - 2 ? (
                 <>
-                  {questions[currentIndex] &&
+                  {/* {questions[currentIndex] &&
                   userAnswers[questions[currentIndex].question] ? (
-                    <button className="button" onClick={handleNext}>
+                    <button className="Qbutton" onClick={handleNext}>
                       Next
                     </button>
                   ) : (
-                    <button className="button" onClick={handleSkip}>
+                    <button className=" Qbutton" onClick={handleSkip}>
                       Skip
                     </button>
-                  )}
+                  )} */}
+                  {questions[currentIndex] && currentIndex<=0?(<button className="Qbutton" onClick={handleNext}>Next</button>):(<div className="controls">
+                    <button className="Qbutton" onClick={handleBack}>
+                      Back
+                    </button>
+                    <button className="Qbutton" onClick={handleNext}>
+                      Next
+                    </button>
+                  </div>)}
                 </>
               ) : (
                 <>
-                  <button className="button" onClick={handleSubmit}>
+                  <button className="Qbutton" onClick={handleSubmit}>
                     Submit
                   </button>
                 </>
@@ -137,32 +259,12 @@ const QuestionsPage = () => {
       </div>
       <div className="nav_n_time">
         <Timer
-        timeLeft={timeLeft}
-        allowedTime={allowedTime}
-        setLeftTime={setTimeLeft}
-        submit={handleSubmit}
-      />
-      <div className="questionsMap">
-        
-        {Array.from({ length: questionsNum }, (_, i) => (
-          <div
-            key={i}
-            className={`questionMapElement ${
-              currentIndex === i ? "active-question" : ""
-            }`}
-            onClick={() => setCurrentIndex(i)}
-          >
-            {questions[i] && userAnswers[questions[i].question] ? (
-              <FaCheckCircle style={{ color: "#7d6aee" }} />
-            ) : (
-              <FaRegCheckCircle />
-            )}
-            question-{i + 1}
-          </div>
-        ))}
+          timeLeft={timeLeft}
+          allowedTime={allowedTime}
+          setLeftTime={setTimeLeft}
+          submit={handleSubmit}
+        />
       </div>
-      </div>
-      
     </div>
   );
 };

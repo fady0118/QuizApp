@@ -4,8 +4,8 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: calc(var(--input-height)*0.75);
-    padding: calc(var(--input-height)*0.85) calc(var(--input-height)*1);
+    gap: calc(var(--input-height)*0.65);
+    padding: calc(var(--input-height)*0.7) calc(var(--input-height)*1);
 
     position: absolute;
     top: 50%;
@@ -78,188 +78,17 @@
 }
 .button{
     position: relative;
-    background-image: url('../../assets/input-bg.png');
-    background-size: 100% 100%;
+    background-image: url('../../assets/buttonImgw.png');
+    background-size: cover;
     background-position: center;
-    /* background-repeat: no-repeat; */
+    background-repeat: no-repeat;
     border: none;
-    width: calc(var(--input-width)*0.6);
-    height: calc(var(--input-height)*0.9);
+    width: calc(var(--input-width)*0.45);
+    height: calc(var(--input-height));
     background-color: transparent;
+    color: var(--input-color);
 }
 .button:hover{
     cursor: pointer;
-    color:var(--input-color);
-}
-
-@media screen and (max-width:1024px){
-    
-@keyframes star-float-1 {
-    0% {
-      transform: rotate(25deg) translate(0, 0);
-      opacity: 0;
-    }
-    20% {
-      opacity: 1;
-    }
-    100% {
-      transform: rotate(300deg) translate(120%,140%);
-      opacity: 0;
-    }
-  }
-  @keyframes star-float-2 {
-    0% {
-      transform: rotate(25deg) translate(0, 0);
-      opacity: 0;
-    }
-    20% {
-      opacity: 1;
-    }
-    100% {
-      transform: rotate(300deg) translate(-120%,-140%);
-      opacity: 0;
-    }
-  }
-  @keyframes star-float-3 {
-    0% {
-      transform: rotate(25deg) translate(0, 0);
-      opacity: 0;
-    }
-    20% {
-      opacity: 1;
-    }
-    100% {
-      transform: rotate(-300deg) translate(-200%,-170%);
-      opacity: 0;
-    }
-  }
-  @keyframes star-float-4 {
-    0% {
-      transform: rotate(25deg) translate(0, 0);
-      opacity: 0;
-    }
-    20% {
-      opacity: 1;
-    }
-    20% {
-      opacity: 1;
-    }
-    100% {
-      transform: rotate(-300deg) translate(-200%,140%);
-      opacity: 0;
-    }
-  }
-  @keyframes star-float-5 {
-    0% {
-      transform: rotate(25deg) translate(0, 0);
-      opacity: 0;
-    }
-    20% {
-      opacity: 1;
-    }
-    100% {
-      transform: rotate(300deg) translate(-100%,140%);
-      opacity: 0;
-    }
-  }
-  
-  .star {
-    position: absolute;
-    height: auto;
-    filter: drop-shadow(0 0 0.2rem #ffe416);
-    color: rgb(255, 207, 173);
-    opacity: 0;
-    z-index: 0;
-    pointer-events: none;
-  }
-  
-  .star-1 {
-    top: 30%;
-    left: 40%;
-    font-size: calc(var(--input-font-size)*0.8);
-    animation: star-float-1 3s ease-in-out infinite;
-  }
-  .star-2 {
-    top: 20%;
-    left: 55%;
-    font-size: calc(var(--input-font-size)*0.6);
-    animation: star-float-2 3s ease-in-out infinite;
-  }
-  .star-3 {
-    top: 65%;
-    left: 70%;
-    font-size: calc(var(--input-font-size)*0.4);
-    animation: star-float-3 3s ease-in-out infinite;
-  }
-  .star-4 {
-    top: 20%;
-    left: 30%;
-    font-size: calc(var(--input-font-size)*0.3);
-    animation: star-float-4 3s ease-in-out infinite;
-  }
-  .star-5 {
-    top: 30%;
-    left: 25%;
-    font-size: calc(var(--input-font-size)*0.5);
-    animation: star-float-5 3s ease-in-out infinite;
-  }
-}
-@media screen and (min-width:1025px) {
-.star{
-    position: absolute;
-
-    height: auto;
-    filter: drop-shadow(0 0 0.2rem #ffe416);
-    color: rgb(255, 207, 173);
-    transform: rotate(25deg);
-    transition: all 1s cubic-bezier(0.05, 0.83, 0.43, 0.96);
-    opacity: 0;
-    z-index: 0;
-    pointer-events: none;
-}
-.star-1{
-    top: 30%;
-    left: 40%;
-    font-size: calc(var(--input-font-size)*0.8);
-}
-.star-2{
-    top: 20%;
-    left: 55%; 
-    font-size: calc(var(--input-font-size)*0.6);
-}
-.star-3{
-    top: 65%;
-    left: 70%; 
-    font-size: calc(var(--input-font-size)*0.4);
-}
-.star-4{
-    top: 20%;
-    left: 30%; 
-    font-size: calc(var(--input-font-size)*0.3); 
-}
-.star-5{
-    top: 30%;
-    left: 25%; 
-    font-size: calc(var(--input-font-size)*0.5); 
-   
-}
-.button:hover .star{
-    opacity: 1;
-}
-.button:hover .star-1{
-    transform: rotate(300deg) translate(120%,140%);
-}
-.button:hover .star-2{
-    transform: rotate(300deg) translate(-120%,-140%);
-}
-.button:hover .star-3{
-    transform: rotate(-300deg) translate(-200%,-170%);
-}
-.button:hover .star-4{
-    transform: rotate(-300deg) translate(-200%,140%);
-}
-.button:hover .star-5{
-    transform: rotate(300deg) translate(-100%,140%);
-} 
-    
+    filter: brightness(1.1);
 }

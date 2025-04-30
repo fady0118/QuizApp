@@ -2,9 +2,10 @@
   --input-width: 14rem;
   --input-height: 1.75rem;
   --input-font-size: 0.85rem;
-  --input-color: #404756;
+  --input-color: #3e4557;
   --border-color: #71747e;
   --label-color:#ebedff;
+  --highlighted-color:#ffeeae;
 }
 
 html,
@@ -12,6 +13,12 @@ body {
   background-color: hsl(240, 2%, 8%);
   color: aliceblue;
   font-family: 'HYWenHei';
+  overflow-x: hidden;
+  background-color: #1d1c22;
+  /* background-image: url('./assets/bgIMG.png');
+  background-blend-mode:color-dodge;
+  background-repeat: repeat-y;
+  background-position: center; */
 }
 
 @font-face {
@@ -51,3 +58,182 @@ nav a:nth-of-type(2):hover {
   background-color: #686e732d;
   border: 0.1rem solid rgba(0, 0, 0, 0.401);
 }
+
+
+/* 
+
+
+
+
+
+@media screen and (max-width:1024px){
+    
+  @keyframes star-float-1 {
+      0% {
+        transform: rotate(25deg) translate(0, 0);
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      100% {
+        transform: rotate(300deg) translate(120%,140%);
+        opacity: 0;
+      }
+    }
+    @keyframes star-float-2 {
+      0% {
+        transform: rotate(25deg) translate(0, 0);
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      100% {
+        transform: rotate(300deg) translate(-120%,-140%);
+        opacity: 0;
+      }
+    }
+    @keyframes star-float-3 {
+      0% {
+        transform: rotate(25deg) translate(0, 0);
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      100% {
+        transform: rotate(-300deg) translate(-200%,-170%);
+        opacity: 0;
+      }
+    }
+    @keyframes star-float-4 {
+      0% {
+        transform: rotate(25deg) translate(0, 0);
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      20% {
+        opacity: 1;
+      }
+      100% {
+        transform: rotate(-300deg) translate(-200%,140%);
+        opacity: 0;
+      }
+    }
+    @keyframes star-float-5 {
+      0% {
+        transform: rotate(25deg) translate(0, 0);
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      100% {
+        transform: rotate(300deg) translate(-100%,140%);
+        opacity: 0;
+      }
+    }
+    
+    .star {
+      position: absolute;
+      height: auto;
+      filter: drop-shadow(0 0 0.2rem #ffe416);
+      color: rgb(255, 207, 173);
+      opacity: 0;
+      z-index: 0;
+      pointer-events: none;
+    }
+    
+    .star-1 {
+      top: 30%;
+      left: 40%;
+      font-size: calc(var(--input-font-size)*0.8);
+      animation: star-float-1 3s ease-in-out infinite;
+    }
+    .star-2 {
+      top: 20%;
+      left: 55%;
+      font-size: calc(var(--input-font-size)*0.6);
+      animation: star-float-2 3s ease-in-out infinite;
+    }
+    .star-3 {
+      top: 65%;
+      left: 70%;
+      font-size: calc(var(--input-font-size)*0.4);
+      animation: star-float-3 3s ease-in-out infinite;
+    }
+    .star-4 {
+      top: 20%;
+      left: 30%;
+      font-size: calc(var(--input-font-size)*0.3);
+      animation: star-float-4 3s ease-in-out infinite;
+    }
+    .star-5 {
+      top: 30%;
+      left: 25%;
+      font-size: calc(var(--input-font-size)*0.5);
+      animation: star-float-5 3s ease-in-out infinite;
+    }
+  }
+  @media screen and (min-width:1025px) {
+  .star{
+      position: absolute;
+  
+      height: auto;
+      filter: drop-shadow(0 0 0.2rem #d0c254);
+      color: rgb(255, 207, 173);
+      transform: rotate(25deg);
+      transition: all 1s cubic-bezier(0.05, 0.83, 0.43, 0.96);
+      opacity: 0;
+      z-index: 0;
+      pointer-events: none;
+  }
+  .star-1{
+      top: 30%;
+      left: 40%;
+      font-size: calc(var(--input-font-size)*0.8);
+  }
+  .star-2{
+      top: 20%;
+      left: 55%; 
+      font-size: calc(var(--input-font-size)*0.6);
+  }
+  .star-3{
+      top: 65%;
+      left: 70%; 
+      font-size: calc(var(--input-font-size)*0.4);
+  }
+  .star-4{
+      top: 20%;
+      left: 30%; 
+      font-size: calc(var(--input-font-size)*0.3); 
+  }
+  .star-5{
+      top: 30%;
+      left: 25%; 
+      font-size: calc(var(--input-font-size)*0.5); 
+     
+  }
+  .button:hover .star{
+      opacity: 1;
+  }
+  .button:hover .star-1{
+      transform: rotate(300deg) translate(120%,140%);
+  }
+  .button:hover .star-2{
+      transform: rotate(300deg) translate(-120%,-140%);
+  }
+  .button:hover .star-3{
+      transform: rotate(-300deg) translate(-200%,-170%);
+  }
+  .button:hover .star-4{
+      transform: rotate(-300deg) translate(-200%,140%);
+  }
+  .button:hover .star-5{
+      transform: rotate(300deg) translate(-100%,140%);
+  } 
+      
+  } */

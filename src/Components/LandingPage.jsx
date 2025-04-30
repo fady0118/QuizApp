@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import "./css/LandingPage.css";
-import { CiUser } from "react-icons/ci";
 import { PiStarFourFill } from "react-icons/pi";
+import starEdge from "../assets/starIMG.png";
 
 const LandingPage = () => {
   const [userName, setUserName] = useState("");
@@ -39,12 +39,51 @@ const LandingPage = () => {
       const FormElements = document.querySelectorAll('.LandingContainer label');
       let user_operation = [...FormElements];
       user_operation.splice(1,1);
-      user_operation.forEach(element=>element.style.color='#ffdd7b')
+      user_operation.forEach(element=>element.style.color='#ffeeae')
     }
     
   };
   return (
     <form className="LandingContainer" onSubmit={(e) => handleSubmit(e)}>
+      <img
+                  src={starEdge}
+                  style={{
+                    width: "1rem",
+                    position: "absolute",
+                    top: "0",
+                    left: "0",
+                    transform: "rotate(-90deg)",
+                  }}
+                />
+                <img
+                  src={starEdge}
+                  style={{
+                    width: "1rem",
+                    position: "absolute",
+                    top: "0",
+                    right: "0",
+                  }}
+                />
+                <img
+                  src={starEdge}
+                  style={{
+                    width: "1rem",
+                    position: "absolute",
+                    bottom: "0",
+                    left: "0",
+                    transform: "rotate(180deg)",
+                  }}
+                />
+                <img
+                  src={starEdge}
+                  style={{
+                    width: "1rem",
+                    position: "absolute",
+                    bottom: "0",
+                    right: "0",
+                    transform: "rotate(90deg)",
+                  }}
+                />
       <label>
         Enter User Name
         <div className="inputdiv">
@@ -100,7 +139,7 @@ const LandingPage = () => {
       <button className="button" type="submit">
         <span style={{position:"relative",zIndex:1}}>Submit</span>
         {/* Submit */}
-        <div className="star star-1">
+        {/* <div className="star star-1">
           <PiStarFourFill />
         </div>
         <div className="star star-2">
@@ -114,7 +153,7 @@ const LandingPage = () => {
         </div>
         <div className="star star-5">
           <PiStarFourFill />
-        </div>
+        </div> */}
       </button>
     </form>
   );

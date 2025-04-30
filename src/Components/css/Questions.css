@@ -1,39 +1,85 @@
+:root{
+  --qButton-height:3rem;
+}
 .questionsPage {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 20px;
 }
-.questions{
-      display: flex;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 3rem;
-}
-.questionsMap {
-    display: flex;
-  flex-direction: row;
+
+#sidebarbutton,
+#closeSideBar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0.5rem;
+  padding: 0.3rem;
+  border-radius: 0.3rem;
+
   width: fit-content;
-  background-image: linear-gradient(to right,#1a1825,transparent);
-  justify-content: center;
-  border-radius: 5px;
-  width: 40%;
-  overflow: hidden;
 }
+
+#sidebarbutton {
+  z-index: 0;
+}
+
+#closeSideBar {
+  z-index: 100;
+}
+
+#sidebarbutton:hover,
+#closeSideBar:hover {
+  cursor: pointer;
+  background-color: #f0f8ff09;
+}
+
+.questionsMap {
+  display: flex;
+  flex-direction: column;
+  background-image: linear-gradient(180deg, #1a1a1d, #1a1a1da5);
+  justify-content: flex-start;
+  align-items: center;
+  /* border-radius: 5px; */
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateX(100%);
+  z-index: 10;
+  transition: transform 0.3s ease-in-out;
+}
+
 /* 1a1825 */
 /* 34258d */
-.questionMapElement{
-    background-color: transparent;
-    border: none;
-    padding: 10px;
-    color: white;
-    display: flex;
-    position: relative;
-    gap: 5px;
-    cursor: pointer;
-    border-radius: 4px;
-    text-transform: capitalize;
-    font-size:calc(var(--input-font-size)*0.8);
+.questionsMap div {
+  width: 100%;
+}
+
+.questionmapXYZ {
+  /* text-align: center; */
+  height: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.questionMapElement {
+  background-color: transparent;
+  border: none;
+  padding: 0.7rem 0.6rem;
+  color: white;
+  display: flex;
+  position: relative;
+  gap: 5px;
+  cursor: pointer;
+  border-radius: 4px;
+  text-transform: capitalize;
+  font-size: calc(var(--input-font-size)*0.9);
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .questionMapElement:not(:active):hover,
@@ -46,67 +92,147 @@
   background-color: #1A1F24;
   outline: none;
 }
+
 @media screen and (min-width:768px) {
   .questionMapElement::before {
-  content: "";
-  position: absolute;
-  top: 5px;
-  left: -10px;
-  width: 5px;
-  height: 80%;
-  background-color: #342a61;
-  border-radius: 5px;
-  opacity: 0;
-}
+    content: "";
+    position: absolute;
+    top: 5px;
+    left: -10px;
+    width: 5px;
+    height: 80%;
+    background-color: #342a61;
+    border-radius: 5px;
+    opacity: 0;
+  }
 }
 
 .questionMapElement.active-question {
-  background-image: linear-gradient(to right,#342a61,transparent);
+  background-image: linear-gradient(to right, #342a61, transparent);
 }
 
 .questionMapElement.active-question::before {
-    opacity: 1;
+  opacity: 1;
 
-  }
+}
 
 .questionMapElement>* {
   width: 15px
 }
+
 .nav_n_time {
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
   justify-content: space-evenly;
 }
-.questionContainer {
-  width: 90%;
-}
-.questionContainer .button{
-    margin-top: 0.5rem;
-    padding: 1% 2%;
-}
-.questionBody{
-display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.5rem;
-}
-.answerRadio{
-  width: 100%;
-}
-.answerRadio input[type="radio"]{
-  display: none;
-}
-.answerRadio label {
-  display: inline-block;
-  width: 70%;
-  padding: 10px 20px;
-  border: thin solid #cccccc51;
-  border-radius: 0.5rem;
-  cursor: pointer;
-  transition: border-color 0.3s, background-color 0.3s;
+
+.questions {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
 }
 
-input[type="radio"]:checked + label {
-  border-color: #7d6aee;
+.questionContainer {
+  background-color: var(--input-color);
+  width: 25rem;
+  padding: 1rem;
+  border-radius: 0.7rem;
+  box-sizing: border-box;
+  outline: 1px solid var(--border-color);
+  outline-offset: -0.4rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin: 0.5rem;
+}
+
+.questionContainer .button {
+  margin-top: 0.5rem;
+  padding: 1% 2%;
+}
+
+.questionBody {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* gap: 0.5rem; */
+  font-size: 1rem;
+ 
+}
+.questionHead{
+  text-align: center;
+  color: var(--highlighted-color);
+  padding: 0.25rem 0;
+  font-size: 0.9rem;
+  line-height: 1.2rem;
+}
+.answerRadio {
+  width: 100%;
+  margin-bottom: 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+.answerRadio input[type="radio"] {
+  display: none;
+}
+.answerRadio input[type="radio"]:not(:checked)+label:hover{
+  background-color: #636a81;
+} 
+.answerRadio label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 70%;
+  height: 1.5rem;
+  padding: 10px 20px;
+  font-size: 0.7rem;
+  overflow: hidden;
+  background-color: #4b5366;
+  /* border: thin solid #cccccc51; */
+  border-radius: 0.1rem;
+  cursor: pointer;
+  transition: all 0.3s ease-in;
+  background-image: url('../../assets/XYZ_.png');
+  background-size: contain;
+  background-position: right;
+  background-repeat: no-repeat;
+}
+
+.answerRadio label span{
+  width: 70%;
+  text-align: center;
+}
+input[type="radio"]:checked+label {
+  border: 1px solid var(--highlighted-color);
+  box-shadow: 0 0 0.1rem 0.15rem #2a303dac;
+  transform: scale(1.02);
+  background-color: #636a81;
+}
+
+.Qbutton{
+  width: calc(var(--qButton-height)*2.5);
+  height: var(--qButton-height);
+  background-color: transparent;
+  border: none;
+  background-image: url('../../assets/buttonImg1.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  color: var(--input-color);
+  font-size: var(--input-font-size);
+  font-family: 'HYWenHei';
+  transition: all 0.3s ease-in-out;
+  position: relative;
+}
+.Qbutton:hover{
+  cursor: pointer;
+  filter: grayscale(1.2) hue-rotate(175deg) brightness(1.15);
 }
