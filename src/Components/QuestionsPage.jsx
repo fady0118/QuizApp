@@ -49,8 +49,10 @@ const QuestionsPage = () => {
         const response = await fetch(apiUrl);
         const data = await response.json();
         console.log(data.results);
-        const decodedData = decodeQuestions(data.results);
-        setQuestions(decodedData);
+        if (data.results) {
+          const decodedData = decodeQuestions(data.results);
+          setQuestions(decodedData);
+        }
       } catch (error) {
         console.error("Error fetching questions:", error);
       }
@@ -187,12 +189,9 @@ const QuestionsPage = () => {
                   onClick={() => setCurrentIndex(i)}
                 >
                   {questions[i] && userAnswers[questions[i].question] ? (
-                    <AiFillLike style={{transform:'scale(1.2)'}}/>
-
+                    <AiFillLike style={{ transform: "scale(1.2)" }} />
                   ) : (
-                    
-                    <AiFillLike fill="transparent"/>
-
+                    <AiFillLike fill="transparent" />
                   )}
                   question-{i + 1}
                 </div>
@@ -294,14 +293,18 @@ const QuestionsPage = () => {
           )}
         </div>
       </div>
-      <div className="nav_n_time">
-        <Timer
-          timeLeft={timeLeft}
-          allowedTime={allowedTime}
-          setLeftTime={setTimeLeft}
-          submit={handleSubmit}
-        />
-      </div>
+      {questions.length > 0 ? (
+        <div className="nav_n_time">
+          <Timer
+            timeLeft={timeLeft}
+            allowedTime={allowedTime}
+            setLeftTime={setTimeLeft}
+            submit={handleSubmit}
+          />
+        </div>
+      ) : (
+        <></>
+      )}
     </div>
   );
 };

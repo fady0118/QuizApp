@@ -17,6 +17,7 @@ const Timer = ({ timeLeft, allowedTime, setLeftTime, submit }) => {
 
   useEffect(() => {
     if(timeLeft<=0){
+      console.log('timer submit')
       submit();
     }
   }, [timeLeft, submit]);
