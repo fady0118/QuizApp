@@ -12,51 +12,41 @@ const LeaderboardItem = ({ data }) => {
   const strokeDashoffset = circumference - (data.grade / 100) * circumference; // Calculate offset for progress
 
   return (
-    <div className={`LeaderboardResult ${(data.category).replace(/\s+/g,'').replace(/:/g, '-').replace(/&/g, '-')}`}>
+    <div
+      className={`LeaderboardResult ${data.category
+        .replace(/\s+/g, "")
+        .replace(/:/g, "-")
+        .replace(/&/g, "-")}`}
+    >
       <div className="leaderboardName">{data.userName}</div>
 
-      {/* <svg width={2 * radius} height={2 * radius}>
-            <defs>
-              <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
-                <stop offset="0%" stopColor="violet" />
-                <stop offset="100%" stopColor="blueviolet" />
-              </linearGradient>
-            </defs>
-            <circle
-              stroke="gray" // Background circle
-              fill="transparent"
-              strokeWidth={strokeWidth}
-              r={normalizedRadius}
-              cx={radius}
-              cy={radius}
-            />
-            <circle
-              stroke="url(#gradient)"
-              fill="transparent"
-              strokeWidth={strokeWidth}
-              r={normalizedRadius}
-              cx={radius}
-              cy={radius}
-              strokeDasharray={circumference} // Total circumference
-              strokeDashoffset={strokeDashoffset} // Progress offset
-              transform={`rotate(-90 ${radius} ${radius})`}
-              style={{
-                transition: "stroke-dashoffset 1s linear", // Smooth transition for progress
-              }}
-            />
-            <text
-              x={radius}
-              y={radius + strokeWidth * 2}
-              textAnchor="middle"
-              // dominantBaseline="middle"
-              fontSize={strokeWidth * 6.5}
-              fill="url(#gradient)"
-            >
-              {Math.floor(data.grade)}
-            </text>
-          </svg> */}
+      <div className="LeaderboardSvgContainer">
+        <span>{data.grade.toFixed(2)}%</span>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-50 0 550 50">
+          <defs>
+            <linearGradient id={`${data.id}`} x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop
+                id="gradientStart"
+                offset={`${Math.round(data.grade)}%`}
+                stop-color="#fdffff"
+              />
+              <stop
+                id="gradientEnd"
+                offset={`${Math.round(data.grade)}%`}
+                stop-color="#4c4842"
+              />
+                     </linearGradient>
+          </defs>
+          <path d="M -30 20 L -15 5 L 0 20 L -15 35 Z" fill="#fdffff" />
+          <path
+            d="M 0 20 L 15 10 M 15 10 L 400 10 L 415 20 L 400 30 L 15 30 L 0 20"
+            fill={`url(#${data.id})`}
+          />
+          <path d="M 430 20 L 445 5 L 460 20 L 445 35 Z" fill="#fdffff" />
+        </svg>
+      </div>
 
-      <div className='Leaderboardcategory'>{data.category}</div>
+      <div className="Leaderboardcategory">{data.category}</div>
     </div>
   );
 };
@@ -64,8 +54,5 @@ const LeaderboardItem = ({ data }) => {
 export default LeaderboardItem;
 
 const LeaderboardGradebar = ({ percentage, title }) => {
-  return (
-    <>
-    </>
-  );
+  return <></>;
 };

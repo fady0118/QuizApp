@@ -157,8 +157,18 @@ input:-webkit-autofill {
 .VideoGames{
     background-image: url('../../assets/GamesBg.png');
 }
-.leaderboardGradebar{
+/* .leaderboardGradebar{
     display: flex;
     flex-direction: row;
     justify-content: center;
+} */
+
+.LeaderboardSvgContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+    width: 40%;
+    font-size: calc(var(--input-font-size)*0.8);
+    color: #4c4842;
 }

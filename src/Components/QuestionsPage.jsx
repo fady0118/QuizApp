@@ -1,23 +1,16 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import QuestionCard from "./QuestionCard";
-// import ResultPage from "./ResultPage";
 import "./css/Questions.css";
 import Timer from "./Timer";
 import { useRef } from "react";
 
-// import { FaCheckCircle } from "react-icons/fa";
-// import { FaRegCheckCircle } from "react-icons/fa";
 import { HiOutlineMenu } from "react-icons/hi";
 import { HiOutlineX } from "react-icons/hi";
 import { AiFillLike } from "react-icons/ai";
-// import { PiStarFourFill } from "react-icons/pi";
 import starEdge from "../assets/starIMG.png";
 import XYZ from "../assets/XYZ.png";
 import borderLine from "../assets/borderLine.png";
-
-
-import activeQ from "../assets/activeQ.png";
 
 const decodeHtmlEntities = (str) => {
   const textArea = document.createElement("textarea");
@@ -72,7 +65,7 @@ const QuestionsPage = () => {
     return decodedQuestions;
   };
 
-  const handleSubmit = useCallback(() => {
+  const handleSubmit = () => {
     navigate("/Result", {
       state: {
         userName: userName,
@@ -83,7 +76,7 @@ const QuestionsPage = () => {
         allowedTime: allowedTime,
       },
     });
-  }, [userAnswers, questions]);
+  };
 
   const handleAnswer = (question, answer) => {
     setUserAnswers((prevAnswers) => ({
@@ -101,9 +94,7 @@ const QuestionsPage = () => {
       setCurrentIndex((prevIndex) => prevIndex - 1);
     }
   };
-  // const handleSkip = () => {
-  //   handleNext();
-  // };
+
   useEffect(() => {
     const mediaQuery = window.matchMedia("(min-width:768px)");
     const handleChange = () => setIsLargeScreen(mediaQuery.matches);
@@ -252,16 +243,6 @@ const QuestionsPage = () => {
 
               {currentIndex <= questions.length - 2 ? (
                 <>
-                  {/* {questions[currentIndex] &&
-                  userAnswers[questions[currentIndex].question] ? (
-                    <button className="Qbutton" onClick={handleNext}>
-                      Next
-                    </button>
-                  ) : (
-                    <button className=" Qbutton" onClick={handleSkip}>
-                      Skip
-                    </button>
-                  )} */}
                   {questions[currentIndex] && currentIndex <= 0 ? (
                     <button className="Qbutton" onClick={handleNext}>
                       <div>Next</div>

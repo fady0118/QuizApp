@@ -1,11 +1,9 @@
 import React from "react";
-// import Gradebar from "./Gradebar";
 import "./css/results.css";
 import starEdge from "../assets/starIMG.png";
 import borderLine from "../assets/borderLine-.png";
 
 const QuizResultCard = ({ Result, saveResult }) => {
-  console.log(Result);
   // constants
   const percentage =
     (Result.numOfCorrectAnswers / Result.numberOfQuestions) * 100; // Remaining percentage

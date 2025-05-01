@@ -12,6 +12,7 @@ const ResultPage = () => {
   const location = useLocation();
   const { userName, category, answers, questions, timeleft, allowedTime } =
     location.state || {};
+
   const [displayResults, setDisplayResults] = useState(false);
   const [results, setResults] = useState([]);
 

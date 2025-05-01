@@ -1,12 +1,11 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./css/LandingPage.css";
-import { PiStarFourFill } from "react-icons/pi";
 import starEdge from "../assets/starIMG.png";
 
 const LandingPage = () => {
   const [userName, setUserName] = useState("");
-  const [numOfQuestions, setNumOfQuestions] = useState(1);
+  const [numOfQuestions, setNumOfQuestions] = useState(5);
   const [selectedCategory, setSelectedOperation] = useState("");
 
   const Category = {
@@ -94,7 +93,6 @@ const LandingPage = () => {
             onChange={(e) => setUserName(e.target.value)}
             placeholder="..."
           />
-          {/* <CiUser /> */}
         </div>
       </label>
       <label>
@@ -107,9 +105,9 @@ const LandingPage = () => {
           value={numOfQuestions}
           onChange={(e) => setNumOfQuestions(e.target.value)}
         >
-          {Array.from({ length: 15 }, (_, i) => (
-            <option key={i + 1} value={i + 1}>
-              {i + 1}
+          {Array.from({ length: 11 }, (_, i) => (
+            <option key={i + 5} value={i + 5}>
+              {i + 5}
             </option>
           ))}
         </select>
@@ -138,23 +136,6 @@ const LandingPage = () => {
       
       <button className="Qbutton" type="submit">
         <div style={{fontSize:'0.75rem'}}>Submit</div>
-        {/* <span style={{position:"relative",zIndex:1}}>Submit</span> */}
-        
-        {/* <div className="star star-1">
-          <PiStarFourFill />
-        </div>
-        <div className="star star-2">
-          <PiStarFourFill />
-        </div>
-        <div className="star star-3">
-          <PiStarFourFill />
-        </div>
-        <div className="star star-4">
-          <PiStarFourFill />
-        </div>
-        <div className="star star-5">
-          <PiStarFourFill />
-        </div> */}
       </button>
     </form>
   );

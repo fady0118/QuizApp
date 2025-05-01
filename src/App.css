@@ -11,7 +11,7 @@
 
 html,
 body {
-  background-color: hsl(240, 2%, 8%);
+
   color: aliceblue;
   font-family:var(--font--family);
   overflow-x: hidden;
