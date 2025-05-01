@@ -79,18 +79,19 @@ const QuizResultCard = ({ Result, saveResult }) => {
       />
       <div className="resultHeadContainer">
         <p className="resultHead">Quiz Results</p>
-        <img src={borderLine} style={{width:'95%'}} alt="" />
+        <img src={borderLine} style={{ width: "95%" }} alt="" />
       </div>
 
       <div className="ResultData">
-        <p>
-          Category:&nbsp;
-          {Result.category}
-        </p>
-        <p>
+        {" "}
+        <div>
           Name:&nbsp;
           <span style={{ textTransform: "capitalize" }}>{Result.userName}</span>
-        </p>
+        </div>
+        <div>
+          Category:&nbsp;
+          <span style={{ textTransform: "capitalize" }}>{Result.category}</span>
+        </div>
       </div>
       <div className="gradeContainer">
         <div id="GradeSvgContainer" onClick={gradeClick}>
@@ -134,7 +135,7 @@ const QuizResultCard = ({ Result, saveResult }) => {
               {Math.floor(Result.grade)}
             </text>
           </svg>
-          <p>Grade</p>
+          <span style={{fontSize:'0.75rem'}}>Click for details</span>
         </div>
         <div id="detailedGradeContainer" onClick={gradeClick}>
           <div
@@ -160,7 +161,7 @@ const QuizResultCard = ({ Result, saveResult }) => {
           </div>
         </div>
       </div>
-      
+
       <button className="Qbutton" onClick={() => saveResult(Result)}>
         <div>Save Result</div>
       </button>
@@ -174,11 +175,11 @@ const QuizResultCard = ({ Result, saveResult }) => {
 export default QuizResultCard;
 
 const Gradebar = ({ percentage, title }) => {
-  const width = (percentage / 100) * 6;
+  const width = (percentage / 100) * 7;
   return (
     <>
       <span style={{ width: "40%" }}>{title}</span>
-      <div style={{ width: "6rem", height: "0.4rem" }}>
+      <div style={{ width: "7rem", height: "0.4rem" }}>
         <div
           style={{
             position: "absolute",
@@ -187,7 +188,7 @@ const Gradebar = ({ percentage, title }) => {
             border: "1px solid rgba(200, 200, 200, 0.28)",
             borderRadius: "1rem",
             height: "0.4rem",
-            width: "6rem",
+            width: "7rem",
             zIndex: "1",
           }}
         ></div>
@@ -204,7 +205,7 @@ const Gradebar = ({ percentage, title }) => {
           }}
         ></div>
       </div>
-      <span style={{width:'10%'}}>{Math.floor(percentage)}%</span>
+      <span style={{ textAlign:'right',width: "12%" }}>{Math.floor(percentage)}%</span>
     </>
   );
 };

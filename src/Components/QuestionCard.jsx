@@ -1,8 +1,8 @@
 import React, { memo } from "react";
 import "./css/Questions.css";
 import borderLine from '../assets/borderLine.png'
-import unchecked from '../assets/checkbox-1.png'
-import checked from '../assets/checkbox-2.png'
+import unchecked from '../assets/unchecked-l.png'
+import checked from '../assets/checked-l.png'
 
 const QuestionCard = ({ question, userAnswer, onAnswer }) => {
   const allAnswers = [...question.incorrect_answers, question.correct_answer];

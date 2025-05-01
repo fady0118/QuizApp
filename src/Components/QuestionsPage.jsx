@@ -10,12 +10,17 @@ import { useRef } from "react";
 // import { FaRegCheckCircle } from "react-icons/fa";
 import { HiOutlineMenu } from "react-icons/hi";
 import { HiOutlineX } from "react-icons/hi";
+import { AiFillLike } from "react-icons/ai";
 // import { PiStarFourFill } from "react-icons/pi";
 import starEdge from "../assets/starIMG.png";
 import XYZ from "../assets/XYZ.png";
 import borderLine from "../assets/borderLine.png";
-import unchecked from "../assets/checkbox-1.png";
-import checked from "../assets/checkbox-2.png";
+import uncheckedL from "../assets/unchecked-l.png";
+import uncheckedD from "../assets/unchecked-d.png";
+import checkedL from "../assets/checked-l.png";
+import checkedD from "../assets/checked-d.png";
+
+import activeQ from "../assets/activeQ.png";
 
 const decodeHtmlEntities = (str) => {
   const textArea = document.createElement("textarea");
@@ -172,7 +177,7 @@ const QuestionsPage = () => {
                 style={{ width: "90%", marginTop: "0.25rem" }}
               ></img>
             </div>
-            <div>
+            <div className="questionMapBox">
               {Array.from({ length: questionsNum }, (_, i) => (
                 <div
                   key={i}
@@ -182,23 +187,12 @@ const QuestionsPage = () => {
                   onClick={() => setCurrentIndex(i)}
                 >
                   {questions[i] && userAnswers[questions[i].question] ? (
-                    <img
-                      style={{
-                        width: "0.8rem",
-                        height: "0.8rem",
-                        margin: "0 0.25rem",
-                      }}
-                      src={checked}
-                    ></img>
+                    <AiFillLike style={{transform:'scale(1.2)'}}/>
+
                   ) : (
-                    <img
-                      style={{
-                        width: "0.8rem",
-                        height: "0.8rem",
-                        margin: "0 0.25rem",
-                      }}
-                      src={unchecked}
-                    ></img>
+                    
+                    <AiFillLike fill="transparent"/>
+
                   )}
                   question-{i + 1}
                 </div>

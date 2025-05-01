@@ -43,7 +43,7 @@
   justify-content: flex-start;
   align-items: center;
   /* border-radius: 5px; */
-  width: 50%;
+  width: 40%;
   height: 100%;
   overflow: hidden;
   position: absolute;
@@ -53,13 +53,8 @@
   z-index: 10;
   transition: transform 0.3s ease-in-out;
 }
-
 /* 1a1825 */
 /* 34258d */
-.questionsMap div {
-  width: 100%;
-}
-
 .questionmapXYZ {
   /* text-align: center; */
   height: 20%;
@@ -70,6 +65,9 @@
   background-color: transparent;
 }
 
+.questionsMap .questionMapBox{
+  width: 100%;
+}
 .questionMapElement {
   background-color: transparent;
   border: none;
@@ -82,7 +80,7 @@
   position: relative;
   gap: 5px;
   cursor: pointer;
-  border-radius: 4px;
+  /* border-radius: 4px; */
   text-transform: capitalize;
   font-size: calc(var(--input-font-size)*0.9);
   width: 100%;
@@ -116,7 +114,12 @@
 }
 
 .questionMapElement.active-question {
-  background-image: linear-gradient(90deg, var(--input-color) 0%, transparent 100%);
+  /* background-image: linear-gradient(90deg, var(--input-color) 0%, transparent 100%); */
+  background-image: url('../../assets/activeQ.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: #3b4358;
 }
 
 .questionMapElement.active-question::before {
@@ -145,7 +148,7 @@
 
 .questionContainer {
   background-color: var(--input-color);
-  width: 100%;
+  width: 25rem;
   margin: calc(var(--container-scale)/6);
   padding: calc(var(--container-scale)/10);
   border-radius: calc(var(--container-scale)/15);
@@ -156,6 +159,7 @@
   flex-direction: column;
   align-items: center;
   position: relative;
+  gap: 0.2rem;
   /* margin: 0.5rem; */
 
 }
@@ -163,6 +167,7 @@
 .questionContainer .button {
   margin-top: 0.5rem;
   padding: 1% 2%;
+
 }
 
 .questionBody {
@@ -257,7 +262,8 @@ input[type="radio"]:checked+label {
 }
 
 .Qbutton div {
-  width: calc(var(--input-font-size)*8);
+  width: calc(var(--input-font-size)*7);
+  font-size: calc(var(--input-font-size)*0.75);
   aspect-ratio: 3.7/1;
   display: flex;
   justify-content: center;
