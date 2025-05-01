@@ -1,9 +1,10 @@
-import React from 'react'
-import './css/Leaderboard.css'
-import './css/results.css'
-const LeaderboardItem = ({data}) => {
-    // const percentage =
-    // (Result.numOfCorrectAnswers / Result.numberOfQuestions) * 100; // Remaining percentage
+import React from "react";
+import "./css/Leaderboard.css";
+import "./css/results.css";
+
+const LeaderboardItem = ({ data }) => {
+  // const percentage =
+  // (Result.numOfCorrectAnswers / Result.numberOfQuestions) * 100; // Remaining percentage
   const radius = 25; // Radius of the circle
   const strokeWidth = radius / 10; // Width of the circular stroke
   const normalizedRadius = radius - strokeWidth / 2; // Normalize radius for the stroke
@@ -11,11 +12,10 @@ const LeaderboardItem = ({data}) => {
   const strokeDashoffset = circumference - (data.grade / 100) * circumference; // Calculate offset for progress
 
   return (
-    <div className='LeaderboardResult'>
-        <div className='leaderboardResultData'><p>Name: {data.userName}</p>
-      <p>Category: {data.category}</p></div>
-      
-      <svg width={2 * radius} height={2 * radius}>
+    <div className={`LeaderboardResult ${(data.category).replace(/\s+/g,'').replace(/:/g, '-').replace(/&/g, '-')}`}>
+      <div className="leaderboardName">{data.userName}</div>
+
+      {/* <svg width={2 * radius} height={2 * radius}>
             <defs>
               <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="0%">
                 <stop offset="0%" stopColor="violet" />
@@ -54,9 +54,18 @@ const LeaderboardItem = ({data}) => {
             >
               {Math.floor(data.grade)}
             </text>
-          </svg>
-    </div>
-  )
-}
+          </svg> */}
 
-export default LeaderboardItem
+      <div className='Leaderboardcategory'>{data.category}</div>
+    </div>
+  );
+};
+
+export default LeaderboardItem;
+
+const LeaderboardGradebar = ({ percentage, title }) => {
+  return (
+    <>
+    </>
+  );
+};

@@ -6,13 +6,14 @@
   --border-color: #71747e;
   --label-color:#ebedff;
   --highlighted-color:#ffeeae;
+  --font--family:'HYWenHei';
 }
 
 html,
 body {
   background-color: hsl(240, 2%, 8%);
   color: aliceblue;
-  font-family: 'HYWenHei';
+  font-family:var(--font--family);
   overflow-x: hidden;
   background-color: #1d1c22;
   /* background-image: url('./assets/bgIMG.png');
@@ -58,6 +59,7 @@ nav a:nth-of-type(2):hover {
   background-color: #686e732d;
   border: 0.1rem solid rgba(0, 0, 0, 0.401);
 }
+
 
 
 /* 

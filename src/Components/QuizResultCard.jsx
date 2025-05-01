@@ -1,4 +1,5 @@
 import React from "react";
+// import Gradebar from "./Gradebar";
 import "./css/results.css";
 import starEdge from "../assets/starIMG.png";
 import borderLine from "../assets/borderLine-.png";
@@ -173,6 +174,7 @@ const QuizResultCard = ({ Result, saveResult }) => {
 };
 
 export default QuizResultCard;
+
 
 const Gradebar = ({ percentage, title }) => {
   const width = (percentage / 100) * 7;

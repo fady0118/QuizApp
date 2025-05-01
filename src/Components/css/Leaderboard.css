@@ -6,6 +6,85 @@
     margin-top: 1rem;
 }
 
+
+#search-filter {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border-radius: 1rem;
+    background-color: var(--input-color);
+    width: 85%;
+    height: 1.75rem;
+    /* padding: 0 0.5rem; */
+
+}
+#search-filter *{
+    padding: 0 0.5rem;
+}
+#search-filter.search-filter-bordered {
+    border: thin solid var(--label-color);
+}
+
+#search-filter #leaderboardSearch {
+    border: none;
+    font-family: var(--font--family);
+    font-size: calc(var(--input-font-size)*0.8);
+    border-radius: 1rem;
+    background-color: transparent;
+    color: var(--label-color);
+    width: 90%;
+}
+
+#search-filter #leaderboardSearch:focus  {
+    outline: none;
+    border: none;
+    background-color: transparent;
+}
+input:-webkit-autofill {
+    background-color: transparent !important;
+    appearance: none;
+}
+#search-filter .leaderboardSearchButton {
+    border: none;
+    padding: 0.25rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 1rem;
+    background-color: transparent;
+    color: var(--label-color);
+}
+
+.leaderboardResults {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 90%;
+    gap: 1rem;
+    height: 70vh;
+    overflow-y: auto;
+}
+
+.leaderboardResults::-webkit-scrollbar {
+    border-radius: 1rem;
+    width: 0.2rem;
+    margin-left: 0.25rem;
+}
+
+.leaderboardResults::-webkit-scrollbar-track {
+    background-color: var(--input-color);
+    border-radius: 1rem;
+    width: 0.3rem;
+
+}
+
+.leaderboardResults::-webkit-scrollbar-thumb {
+    background-color: var(--label-color);
+    /* Adjust color for visibility */
+    border-radius: 1rem;
+}
+/* 
 .LeaderboardResult {
     display: flex;
     justify-content: space-between;
@@ -16,7 +95,70 @@
     background-color: rgba(64, 65, 143, 0.104);
     border-radius: 1rem;
     text-transform: capitalize;
+    width: 90%;
+    box-sizing: border-box;
+    flex-shrink: 0;
 }
-.leaderboardResultData{
+
+.leaderboardResultData {
     width: 10rem;
+} */
+
+
+.LeaderboardResult {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: content-box;
+    width: 15rem;
+    height: 3.75rem;
+    padding: 0 1rem;
+    background-color: #dfdbd0;
+    border: 0.1rem solid #dfdbd0;
+    border-radius: 5rem;
+    text-transform: capitalize;
+    width: 90%;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    font-size: calc(var(--input-font-size)*0.9);
+    color: var(--input-color);
+    /* box-shadow: 0 0 0.5rem 0.1rem var(--input-color); */
+    background-size: 50% 100%;
+    background-repeat: no-repeat;
+    background-position: right;
+}
+.Leaderboardcategory,.leaderboardName{
+    width: 25%;
+}
+.Leaderboardcategory{
+    text-align: right;
+    font-weight: 500;
+    color: #dfdbd0;
+}
+
+.Science-Mathematics{
+    background-image: url('../../assets/MathsBg.png');
+}
+.Science-Computers{
+    background-image: url('../../assets/ComputersBg.png');
+}
+.Art{
+    background-image: url('../../assets/ArtBg.png');
+}
+.Music{
+    background-image: url('../../assets/MusicBg.png');
+}
+.JapaneseAnime-Manga{
+    background-image: url('../../assets/AnimeBg.png');
+}
+.Mythology{
+    background-image: url('../../assets/MythBg.png');
+}
+.VideoGames{
+    background-image: url('../../assets/GamesBg.png');
+}
+.leaderboardGradebar{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
