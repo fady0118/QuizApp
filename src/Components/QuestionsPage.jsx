@@ -15,10 +15,7 @@ import { AiFillLike } from "react-icons/ai";
 import starEdge from "../assets/starIMG.png";
 import XYZ from "../assets/XYZ.png";
 import borderLine from "../assets/borderLine.png";
-import uncheckedL from "../assets/unchecked-l.png";
-import uncheckedD from "../assets/unchecked-d.png";
-import checkedL from "../assets/checked-l.png";
-import checkedD from "../assets/checked-d.png";
+
 
 import activeQ from "../assets/activeQ.png";
 

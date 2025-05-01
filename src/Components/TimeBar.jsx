@@ -29,8 +29,8 @@ const TimerBarCircular = ({ timeLeft, allowedTime }) => {
     <svg height={radius * 2} width={radius * 2}  style={{zIndex:'2'}}>
       <defs>
         <linearGradient id="TimergradientStroke" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color='#fff9a8' />
-          <stop offset="100%" stop-color='#e3a381' />
+          <stop offset="0%" stopColor='#fff9a8' />
+          <stop offset="100%" stopColor='#e3a381' />
         </linearGradient>
       </defs>
 
