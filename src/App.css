@@ -36,7 +36,9 @@ body {
   /* Optional: Specify style */
 }
 
-nav {}
+nav {
+  height: 70px;
+}
 
 nav ul {
   display: flex;
@@ -128,7 +130,7 @@ nav a:nth-of-type(2):hover {
 
 @media screen and (min-width:768px) {
   :root {
-      --input-width: 20rem;
+      --input-width: 18rem;
       --input-height: 2.25rem;
       --input-font-size: 0.9rem;
   }

@@ -7,7 +7,7 @@
 
 .QuizCard {
     background-color: var(--input-color);
-    width: fit-content;
+    width: calc(var(--input-width)*1.75);
     margin: calc(var(--container-scale)/10);
     padding: calc(var(--container-scale)/8) calc(var(--container-scale)/6);
     border-radius: calc(var(--container-scale)/15);
@@ -145,7 +145,7 @@
 /* detailedResults */
 
 .detailedResults {
-    width: 90%;
+    width: calc(var(--input-width)*2);
 }
 
 .detailedResults .answer {

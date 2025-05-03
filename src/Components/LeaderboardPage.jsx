@@ -6,13 +6,13 @@ import "./css/Leaderboard.css";
 import { IoSearch } from "react-icons/io5";
 import { TbFilterDown } from "react-icons/tb";
 import Art from "../assets/ArtBg.png";
-import Music from '../assets/MusicBg.png'
-import PC from '../assets/ComputersBg.png'
-import Maths from '../assets/MathsBg.png'
-import Anime from '../assets/AnimeBg.png'
-import Games from '../assets/GamesBg.png'
-import Mythos from '../assets/MythBg.png'
-import loadingImg from '../assets/loading.png'
+import Music from "../assets/MusicBg.png";
+import PC from "../assets/ComputersBg.png";
+import Maths from "../assets/MathsBg.png";
+import Anime from "../assets/AnimeBg.png";
+import Games from "../assets/GamesBg.png";
+import Mythos from "../assets/MythBg.png";
+import loadingImg from "../assets/loading.png";
 
 const LeaderboardPage = () => {
   const [data, setData] = useState([]);
@@ -58,7 +58,7 @@ const LeaderboardPage = () => {
       .filter((keyword) => keyword.trim() !== "");
   };
   const handleSearch = (searchString) => {
-    console.log('searchString: ',searchString)
+    console.log("searchString: ", searchString);
     const keywords = splitKeywords(searchString);
     const olddata = data;
     if (keywords.length <= 0) {
@@ -80,13 +80,17 @@ const LeaderboardPage = () => {
 
   const activateElement = (event) => {
     const newId = event.target.id;
-    console.log('newId',newId)
-    setFilterItems((prev)=>prev.includes(newId)?prev.filter(id=>id!==newId):[...prev,newId]);
+    console.log("newId", newId);
+    setFilterItems((prev) =>
+      prev.includes(newId)
+        ? prev.filter((id) => id !== newId)
+        : [...prev, newId]
+    );
   };
 
   const filterResults = (filterItems) => {
     if (filterItems.length <= 0) {
-      handleSearch('');
+      handleSearch("");
       return;
     }
     const filterstring = filterItems.toString().replaceAll(",", " ");
@@ -107,7 +111,7 @@ const LeaderboardPage = () => {
     // allfilterImagesIds.map((item) =>
     //   document.getElementById(item).classList.remove("activeFilter")
     // );
-    console.log('filterItems', filterItems);
+    console.log("filterItems", filterItems);
     // add class to filtered items
     // filterItems.map((item) => {
     //   document.getElementById(item).classList.add("activeFilter");
@@ -115,11 +119,10 @@ const LeaderboardPage = () => {
     filterResults(filterItems);
   }, [filterItems]);
 
-const handleFilterPopup = ()=>{
-  const filterPopup = document.querySelector(".filterPopup");
-  filterPopup.classList.toggle('visible')
-
-}
+  const handleFilterPopup = () => {
+    const filterPopup = document.querySelector(".filterPopup");
+    filterPopup.classList.toggle("visible");
+  };
 
   const toggleBorder = () => {
     document
@@ -159,10 +162,10 @@ const handleFilterPopup = ()=>{
           </div>
           <div className="filterPopup">
             <div className="filterItem" onClick={(e) => activateElement(e)}>
-            <div>Art</div>
+              <div>Art</div>
               <img
                 id="Art"
-                className={filterItems.includes('Art')?'activeFilter':''}
+                className={filterItems.includes("Art") ? "activeFilter" : ""}
                 style={{ width: "100%", height: "100%" }}
                 src={Art}
                 alt=""
@@ -172,57 +175,63 @@ const handleFilterPopup = ()=>{
               <div>Music</div>
               <img
                 id="Music"
-                className={filterItems.includes('Music')?'activeFilter':''}
+                className={filterItems.includes("Music") ? "activeFilter" : ""}
                 style={{ width: "100%", height: "100%" }}
                 src={Music}
                 alt=""
               />
             </div>
             <div className="filterItem" onClick={(e) => activateElement(e)}>
-            <div>PC</div>
+              <div>PC</div>
               <img
                 id="Computers"
-                className={filterItems.includes('Computers')?'activeFilter':''}
+                className={
+                  filterItems.includes("Computers") ? "activeFilter" : ""
+                }
                 style={{ width: "100%", height: "100%" }}
                 src={PC}
                 alt=""
               />
             </div>
             <div className="filterItem" onClick={(e) => activateElement(e)}>
-            <div>Maths</div>
+              <div>Maths</div>
               <img
                 id="Mathematics"
-                className={filterItems.includes('Mathematics')?'activeFilter':''}
+                className={
+                  filterItems.includes("Mathematics") ? "activeFilter" : ""
+                }
                 style={{ width: "100%", height: "100%" }}
                 src={Maths}
                 alt=""
               />
             </div>
             <div className="filterItem" onClick={(e) => activateElement(e)}>
-            <div>Anime</div>
+              <div>Anime</div>
               <img
                 id="Anime"
-                className={filterItems.includes('Anime')?'activeFilter':''}
+                className={filterItems.includes("Anime") ? "activeFilter" : ""}
                 style={{ width: "100%", height: "100%" }}
                 src={Anime}
                 alt=""
               />
             </div>
             <div className="filterItem" onClick={(e) => activateElement(e)}>
-            <div>Games</div>
+              <div>Games</div>
               <img
                 id="Games"
-                className={filterItems.includes('Games')?'activeFilter':''}
+                className={filterItems.includes("Games") ? "activeFilter" : ""}
                 style={{ width: "100%", height: "100%" }}
                 src={Games}
                 alt=""
               />
             </div>
             <div className="filterItem" onClick={(e) => activateElement(e)}>
-            <div>Mythos</div>
+              <div>Mythos</div>
               <img
                 id="Mythology"
-                className={filterItems.includes('Mythology')?'activeFilter':''}
+                className={
+                  filterItems.includes("Mythology") ? "activeFilter" : ""
+                }
                 style={{ width: "100%", height: "100%" }}
                 src={Mythos}
                 alt=""
@@ -233,11 +242,11 @@ const handleFilterPopup = ()=>{
       </div>
       {loading ? (
         <div className="loadingScreenContainer">
-                      <img src={loadingImg} alt="" className="loadingscreenImg"/>
-                      <p>loading leaderboard</p>
-                    </div>
-        // <p>Loading Leaderboard...</p>
+          <img src={loadingImg} alt="" className="loadingscreenImg" />
+          <p>loading leaderboard</p>
+        </div>
       ) : (
+        // <p>Loading Leaderboard...</p>
         <div className="leaderboardResults">
           {AllfilteredData.map((result) => (
             <LeaderboardItem key={result.id} data={result} />

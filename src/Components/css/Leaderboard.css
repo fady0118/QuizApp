@@ -1,10 +1,25 @@
 .leaderboardContainer {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     gap: 1rem;
     margin-top: 1rem;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: calc(96vh - 70px)
+}
+
+.leaderboardSearchbar {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    aspect-ratio: 30/1;
+    height: auto;
 }
 
 #search-filter {
@@ -14,13 +29,15 @@
     border-radius: 1rem;
     background-color: var(--input-color);
     width: 85%;
-    height: 1.75rem;
+    height: 100%;
     /* padding: 0 0.5rem; */
 
 }
-#search-filter *{
+
+#search-filter * {
     padding: 0 0.5rem;
 }
+
 #search-filter.search-filter-bordered {
     border: thin solid var(--label-color);
 }
@@ -35,21 +52,15 @@
     width: 90%;
 }
 
-#search-filter #leaderboardSearch:focus  {
+#search-filter #leaderboardSearch:focus {
     outline: none;
     border: none;
     background-color: transparent;
 }
+
 input:-webkit-autofill {
     background-color: transparent !important;
     appearance: none;
-}
-.leaderboardSearchbar{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    width: 80%;
 }
 
 #search-filter .leaderboardSearchButton {
@@ -63,14 +74,15 @@ input:-webkit-autofill {
     color: var(--label-color);
 }
 
-.leaderboardFilterbar{
+.leaderboardFilterbar {
     position: relative;
     width: 10%;
     text-align: center;
     vertical-align: middle;
-    
+
 }
-.filterPopup{
+
+.filterPopup {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -82,7 +94,7 @@ input:-webkit-autofill {
     position: absolute;
     top: 1.75rem;
     right: 1rem;
-    background-color: var(--background-color);
+    background-color: var(--background-color1);
     border-radius: 0.5rem;
     z-index: 100;
     width: 15rem;
@@ -92,38 +104,27 @@ input:-webkit-autofill {
     pointer-events: none;
     transition: all 0.3s linear;
 }
-.filterIcon{
+
+.filterIcon {
     font-size: 1.25rem;
     border-radius: 0.5rem;
     transition: all 0.3s linear;
     padding: 0.2rem;
 }
-.leaderboardFilterbar .filterIcon:hover{
+
+.leaderboardFilterbar .filterIcon:hover {
     background-color: var(--input-color);
 }
 
-@media (min-width: 768px) {
-.leaderboardFilterbar .filterIcon:hover + .filterPopup,
-.filterPopup:hover {
-    opacity: 1;
-    visibility: visible;
-    pointer-events: auto; /* Allows interaction when visible */
-}
-}
-@media (max-width: 767px) {
-    .filterPopup.visible {
-        opacity: 1;
-        visibility: visible;
-        pointer-events: auto;
-    }
-}
 
-.filterPopup .filterItem{
+
+.filterPopup .filterItem {
     position: relative;
     width: 3.5rem;
     height: 2rem;
 }
-.filterItem div{
+
+.filterItem div {
     position: absolute;
     z-index: 1;
     font-size: 0.7rem;
@@ -132,19 +133,22 @@ input:-webkit-autofill {
     pointer-events: none;
 
 }
-.filterPopup .filterItem img{
+
+.filterPopup .filterItem img {
     filter: grayscale(1);
     border-radius: 0.15rem;
     transition: all 0.1s linear;
 }
-.filterPopup .filterItem:hover img{
+
+.filterPopup .filterItem:hover img {
     cursor: pointer;
     /* border: thin solid blue; */
     outline: 2px solid #4a455179;
     transform: scale(1.05);
     filter: grayscale(0);
 }
-.filterPopup img.activeFilter{
+
+.filterPopup img.activeFilter {
     filter: grayscale(0);
 }
 
@@ -154,8 +158,8 @@ input:-webkit-autofill {
     justify-content: flex-start;
     align-items: center;
     width: 90%;
-    gap: 1rem;
-    height: 70vh;
+    gap: calc(var(--input-height)*0.5);
+    /* height: 100%; */
     overflow-y: auto;
 }
 
@@ -164,14 +168,14 @@ input:-webkit-autofill {
     justify-content: space-between;
     align-items: center;
     box-sizing: content-box;
-    width: 15rem;
-    height: 3.75rem;
+    width: 90%;
+    height: auto;
+    aspect-ratio: 7/1;
     padding: 0 1rem;
     background-color: #dfdbd0;
     border: 0.1rem solid #dfdbd0;
     border-radius: 5rem;
     text-transform: capitalize;
-    width: 90%;
     box-sizing: border-box;
     flex-shrink: 0;
     font-size: calc(var(--input-font-size)*0.9);
@@ -181,43 +185,53 @@ input:-webkit-autofill {
     background-repeat: no-repeat;
     background-position: right;
 }
-.Leaderboardcategory,.leaderboardName{
+
+.Leaderboardcategory,
+.leaderboardName {
     width: 25%;
 }
-.Leaderboardcategory{
+
+.Leaderboardcategory {
     text-align: right;
     font-weight: 500;
     color: #dfdbd0;
 }
 
-.Science-Mathematics{
+.Science-Mathematics {
     background-image: url('../../assets/MathsBg.png');
 }
-.Science-Computers{
+
+.Science-Computers {
     background-image: url('../../assets/ComputersBg.png');
 }
-.Art{
+
+.Art {
     background-image: url('../../assets/ArtBg.png');
 }
-.Music{
+
+.Music {
     background-image: url('../../assets/MusicBg.png');
 }
-.JapaneseAnime-Manga{
+
+.JapaneseAnime-Manga {
     background-image: url('../../assets/AnimeBg.png');
 }
-.Mythology{
+
+.Mythology {
     background-image: url('../../assets/MythBg.png');
 }
-.VideoGames{
+
+.VideoGames {
     background-image: url('../../assets/GamesBg.png');
 }
+
 /* .leaderboardGradebar{
     display: flex;
     flex-direction: row;
     justify-content: center;
 } */
 
-.LeaderboardSvgContainer{
+.LeaderboardSvgContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -225,4 +239,32 @@ input:-webkit-autofill {
     width: 40%;
     font-size: calc(var(--input-font-size)*0.8);
     color: #4c4842;
+}
+
+@media (max-width: 1024px) {
+    .filterPopup.visible {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+
+}
+
+@media (min-width: 768px) {
+    .LeaderboardResult {
+        aspect-ratio: 10/1;
+    }
+}
+
+@media (min-width: 1024px) {
+    .leaderboardFilterbar .filterIcon:hover+.filterPopup,
+    .filterPopup:hover {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        /* Allows interaction when visible */
+    }
+    .LeaderboardResult {
+        aspect-ratio: 12.5/1;
+    }
 }
