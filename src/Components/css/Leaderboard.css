@@ -225,11 +225,6 @@ input:-webkit-autofill {
     background-image: url('../../assets/GamesBg.png');
 }
 
-/* .leaderboardGradebar{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-} */
 
 .LeaderboardSvgContainer {
     display: flex;

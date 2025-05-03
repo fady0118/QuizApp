@@ -20,17 +20,6 @@
     position: relative;
     gap: 0.5rem;
     color: #d9d8f4;
-
-    /* display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 1rem;
-    padding: 0.75rem 1.5rem;
-    border: thin solid rgba(113, 158, 197, 0.256);
-    border-radius: 0.5rem;
-    width:18rem;
-    background-color: #3f3f601c;
-    color: #d9d8f4; */
 }
 
 .QuizCard p {
@@ -216,8 +205,6 @@ box-sizing: border-box;
     text-align: left;
     vertical-align: middle;
     margin: 0.5rem;
-    /* margin-top: 0.5rem;
-    margin-left: 0.5rem; */
 }
 .userRecordedAnswer>span:nth-of-type(2){
     font-size: calc(var(--input-font-size)*0.55);
@@ -225,6 +212,3 @@ box-sizing: border-box;
 .answer div.correctAnswer{
     width: 95%;
 }
-/* .detailedResults .answer span {
-    margin: 0 0.25rem;
-} */

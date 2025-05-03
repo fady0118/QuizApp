@@ -33,15 +33,6 @@ const TimerBarCircular = ({ timeLeft, allowedTime }) => {
           <stop offset="100%" stopColor='#e3a381' />
         </linearGradient>
       </defs>
-
-      {/* <circle
-        stroke="lightgray" // Background circle
-        fill="transparent"
-        strokeWidth={strokeWidth}
-        r={normalizedRadius}
-        cx={radius}
-        cy={radius}
-      /> */}
       <circle
         stroke="url(#TimergradientStroke)" // Dynamic color for the progress
         fill="none"
@@ -66,16 +57,6 @@ const TimerBarCircular = ({ timeLeft, allowedTime }) => {
       >
         {msToTime(timeLeft)}
       </text>
-      {/* <text
-                x="50%"
-                y="50%"
-                textAnchor="middle"
-                dominantBaseline="middle"
-                fontSize="16px"
-                fill={getColor()}
-            >
-                {Math.round(percentage)}%
-            </text> */}
     </svg>
   );
 };

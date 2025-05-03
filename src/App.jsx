@@ -5,7 +5,6 @@ import LandingPage from "./Components/LandingPage";
 import QuestionsPage from "./Components/QuestionsPage";
 import ResultPage from "./Components/ResultPage";
 import LeaderboardPage from './Components/LeaderboardPage';
-import { WiDayCloudy } from "react-icons/wi";
 
 function App() {
   return (

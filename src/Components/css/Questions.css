@@ -54,10 +54,7 @@
   transition: transform 0.3s ease-in-out;
   overflow-y: auto;
 }
-/* 1a1825 */
-/* 34258d */
 .questionmapXYZ {
-  /* text-align: center; */
   height: 15%;
   display: flex;
   flex-direction: column;
@@ -76,7 +73,6 @@
 .questionMapElement {
   background-color: transparent;
   border: none;
-  /* padding: 0.7rem 0.6rem; */
   color: white;
   display: flex;
   flex-direction: row;
@@ -151,8 +147,6 @@
   align-items: center;
   position: relative;
   gap: 0.2rem;
-  /* margin: 0.5rem; */
-
 }
 
 .questionContainer .button {
@@ -166,7 +160,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* gap: 0.5rem; */
   font-size: 1rem;
 
 }
@@ -268,25 +261,6 @@ input[type="radio"]:checked+label {
 
 @media screen and (min-width:768px) {
   .questionsMap{
-    /* width: 20%; */
     transform: translateX(0) !important;
   }
-  /* .questionMapElement{
-    font-size: calc(var(--input-font-size)*0.6);
-  } */
-  /* .questionMapElement::before {
-    content: "";
-    position: absolute;
-    top: 5px;
-    left: -10px;
-    width: 5px;
-    height: 80%;
-    background-color: #342a61;
-    border-radius: 5px;
-    opacity: 0;
-  } */
-  /* .Qbutton div{
-    width: calc(var(--input-font-size)*5);
-    font-size: calc(var(--input-font-size) * 0.5);
-  } */
 }
