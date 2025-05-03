@@ -80,7 +80,6 @@ const LeaderboardPage = () => {
 
   const activateElement = (event) => {
     const newId = event.target.id;
-    console.log("newId", newId);
     setFilterItems((prev) =>
       prev.includes(newId)
         ? prev.filter((id) => id !== newId)
@@ -96,6 +95,10 @@ const LeaderboardPage = () => {
     const filterstring = filterItems.toString().replaceAll(",", " ");
     handleSearch(filterstring);
   };
+
+  useEffect(()=>{
+    filterResults(filterItems)
+  },[filterItems]);
 
   const handleFilterPopup = () => {
     const filterPopup = document.querySelector(".filterPopup");
