@@ -7,6 +7,8 @@
   --label-color:#ebedff;
   --highlighted-color:#ffeeae;
   --font--family:'HYWenHei';
+  --background-color1:#1d1c22;
+  --background-color2:#18171b;
 }
 
 html,
@@ -15,7 +17,8 @@ body {
   color: aliceblue;
   font-family:var(--font--family);
   overflow-x: hidden;
-  background-color: #1d1c22;
+    background: linear-gradient(180deg, var(--background-color1), var(--background-color2));
+  height: 99%;
   /* background-image: url('./assets/bgIMG.png');
   background-blend-mode:color-dodge;
   background-repeat: repeat-y;
@@ -57,17 +60,93 @@ nav a {
 
 nav a:nth-of-type(2):hover {
   background-color: #686e732d;
-  border: 0.1rem solid rgba(0, 0, 0, 0.401);
+  /* border: 0.1rem solid rgba(0, 0, 0, 0.401); */
+  box-shadow: 0 0 0.5rem 0.1rem #00000024;
+}
+
+.loadingScreenContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  position: absolute;
+  top:40%;
+  left:50%;
+  transform: translate(-50%,-50%);
+}
+
+.loadingscreenImg{
+  width: 8rem;
+  height: auto;
+  animation: rotateLoadScreeen 2s linear infinite;
+}
+@keyframes rotateLoadScreeen {
+ 0%{
+    transform: rotate(0deg);
+ } 
+ 100%{
+  transform: rotate(360deg);
+ }
+}
+.loadingScreenContainer p::after{
+  content: '';
+  animation: animateDots 1.25s linear infinite;
+}
+@keyframes animateDots {
+  0%{
+    content: '';
+  }
+  33%{
+    content: '.';
+  }
+  66%{
+    content: '..';
+  }
+  100%{
+    content: '...';
+  }
+}
+
+::-webkit-scrollbar {
+  border-radius: 1rem;
+  width: 0.2rem;
+  margin-left: 0.25rem;
+}
+
+::-webkit-scrollbar-track {
+  background-color: var(--input-color);
+  border-radius: 1rem;
+  width: 0.3rem;
+
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: var(--label-color);
+  border-radius: 1rem;
+}
+
+
+@media screen and (min-width:768px) {
+  :root {
+      --input-width: 20rem;
+      --input-height: 2.25rem;
+      --input-font-size: 0.9rem;
+  }
+}
+@media screen and (min-width:1024px) {
+  .LandingContainer{
+      top: 50%;
+  }
+  :root {
+      --input-width: 21.5rem;
+      --input-height: 2.35rem;
+      --input-font-size: 1rem;
+  }
 }
 
 
 
 /* 
-
-
-
-
-
 @media screen and (max-width:1024px){
     
   @keyframes star-float-1 {
@@ -238,4 +317,4 @@ nav a:nth-of-type(2):hover {
       transform: rotate(300deg) translate(-100%,140%);
   } 
       
-  } */
+  }  */

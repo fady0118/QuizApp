@@ -1,11 +1,11 @@
 .leaderboardContainer {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
     gap: 1rem;
     margin-top: 1rem;
 }
-
 
 #search-filter {
     display: flex;
@@ -44,6 +44,14 @@ input:-webkit-autofill {
     background-color: transparent !important;
     appearance: none;
 }
+.leaderboardSearchbar{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+}
+
 #search-filter .leaderboardSearchButton {
     border: none;
     padding: 0.25rem;
@@ -53,6 +61,91 @@ input:-webkit-autofill {
     border-radius: 1rem;
     background-color: transparent;
     color: var(--label-color);
+}
+
+.leaderboardFilterbar{
+    position: relative;
+    width: 10%;
+    text-align: center;
+    vertical-align: middle;
+    
+}
+.filterPopup{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem;
+    box-sizing: border-box;
+    position: absolute;
+    top: 1.75rem;
+    right: 1rem;
+    background-color: var(--background-color);
+    border-radius: 0.5rem;
+    z-index: 100;
+    width: 15rem;
+    height: 10rem;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: all 0.3s linear;
+}
+.filterIcon{
+    font-size: 1.25rem;
+    border-radius: 0.5rem;
+    transition: all 0.3s linear;
+    padding: 0.2rem;
+}
+.leaderboardFilterbar .filterIcon:hover{
+    background-color: var(--input-color);
+}
+
+@media (min-width: 768px) {
+.leaderboardFilterbar .filterIcon:hover + .filterPopup,
+.filterPopup:hover {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto; /* Allows interaction when visible */
+}
+}
+@media (max-width: 767px) {
+    .filterPopup.visible {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+    }
+}
+
+.filterPopup .filterItem{
+    position: relative;
+    width: 3.5rem;
+    height: 2rem;
+}
+.filterItem div{
+    position: absolute;
+    z-index: 1;
+    font-size: 0.7rem;
+    margin: 0.5rem 0.25rem;
+    color: #ffffffdc;
+    pointer-events: none;
+
+}
+.filterPopup .filterItem img{
+    filter: grayscale(1);
+    border-radius: 0.15rem;
+    transition: all 0.1s linear;
+}
+.filterPopup .filterItem:hover img{
+    cursor: pointer;
+    /* border: thin solid blue; */
+    outline: 2px solid #4a455179;
+    transform: scale(1.05);
+    filter: grayscale(0);
+}
+.filterPopup img.activeFilter{
+    filter: grayscale(0);
 }
 
 .leaderboardResults {
@@ -65,45 +158,6 @@ input:-webkit-autofill {
     height: 70vh;
     overflow-y: auto;
 }
-
-.leaderboardResults::-webkit-scrollbar {
-    border-radius: 1rem;
-    width: 0.2rem;
-    margin-left: 0.25rem;
-}
-
-.leaderboardResults::-webkit-scrollbar-track {
-    background-color: var(--input-color);
-    border-radius: 1rem;
-    width: 0.3rem;
-
-}
-
-.leaderboardResults::-webkit-scrollbar-thumb {
-    background-color: var(--label-color);
-    /* Adjust color for visibility */
-    border-radius: 1rem;
-}
-/* 
-.LeaderboardResult {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    box-sizing: content-box;
-    width: 15rem;
-    padding: 0.5rem 2rem;
-    background-color: rgba(64, 65, 143, 0.104);
-    border-radius: 1rem;
-    text-transform: capitalize;
-    width: 90%;
-    box-sizing: border-box;
-    flex-shrink: 0;
-}
-
-.leaderboardResultData {
-    width: 10rem;
-} */
-
 
 .LeaderboardResult {
     display: flex;

@@ -11,6 +11,7 @@ import { AiFillLike } from "react-icons/ai";
 import starEdge from "../assets/starIMG.png";
 import XYZ from "../assets/XYZ.png";
 import borderLine from "../assets/borderLine.png";
+import loadingImg from '../assets/loading.png'
 
 const decodeHtmlEntities = (str) => {
   const textArea = document.createElement("textarea");
@@ -117,80 +118,52 @@ const QuestionsPage = () => {
 
   return (
     <div className="questionsPage">
-      {isLargeScreen ? (
-        <div className="questionsMap">
-          {Array.from({ length: questionsNum }, (_, i) => (
-            <div
-              key={i}
-              className={`questionMapElement ${
-                currentIndex === i ? "active-question" : ""
-              }`}
-              onClick={() => setCurrentIndex(i)}
-            >
-              {/* <img style={{width:'1rem',height:'1rem'}} src={checked}></img>:
-              <img style={{width:'1rem',height:'1rem'}} src={unchecked}></img> */}
-              {questions[i] && userAnswers[questions[i].question] ? (
-                <img
-                  style={{ width: "1rem", height: "1rem" }}
-                  src={checked}
-                ></img>
-              ) : (
-                <img
-                  style={{ width: "1rem", height: "1rem" }}
-                  src={unchecked}
-                ></img>
-              )}
-              question-{i + 1}
-            </div>
-          ))}
-        </div>
-      ) : (
-        <>
-          <div id="sidebarbutton" onClick={toggleSideBar}>
-            <HiOutlineMenu fontSize={"1.2rem"} />
-          </div>
-          <div className="questionsMap" ref={sideBarRef}>
-            <div id="closeSideBar" onClick={toggleSideBar}>
-              <HiOutlineX fontSize={"1.2rem"} />
-            </div>
-            <div className="questionmapXYZ">
-              <img
-                src={XYZ}
-                style={{
-                  width: "25%",
-                  backgroundImage:
-                    "radial-gradient(#da9e71cd 0%, transparent 75%)",
-                }}
-              />
-              <img
-                src={borderLine}
-                style={{ width: "90%", marginTop: "0.25rem" }}
-              ></img>
-            </div>
-            <div className="questionMapBox">
-              {Array.from({ length: questionsNum }, (_, i) => (
-                <div
-                  key={i}
-                  className={`questionMapElement ${
-                    currentIndex === i ? "active-question" : ""
-                  }`}
-                  onClick={() => setCurrentIndex(i)}
-                >
-                  {questions[i] && userAnswers[questions[i].question] ? (
-                    <AiFillLike style={{ transform: "scale(1.2)" }} />
-                  ) : (
-                    <AiFillLike fill="transparent" />
-                  )}
-                  question-{i + 1}
-                </div>
-              ))}
-            </div>
-          </div>
-        </>
-      )}
+      {!isLargeScreen?<div id="sidebarbutton" onClick={toggleSideBar}>
+        <HiOutlineMenu fontSize={"1.2rem"} />
+      </div>:<></>}
+      <div className="questionsMap" ref={!isLargeScreen ? sideBarRef : undefined}>
+  {/* Render sidebar toggles only for small screens */}
+  {!isLargeScreen && (
+    <>
+      <div id="closeSideBar" onClick={toggleSideBar}>
+        <HiOutlineX fontSize={"1.2rem"} />
+      </div>
+    </>
+  )}
+
+  <div className="questionmapXYZ">
+    <img
+      src={XYZ}
+      style={{
+        width: "25%",
+        backgroundImage: "radial-gradient(#da9e71cd 0%, transparent 75%)",
+      }}
+    />
+    <img src={borderLine} style={{ width: "90%", marginTop: "0.25rem" }} />
+  </div>
+
+  <div className="questionMapBox">
+    {Array.from({ length: questionsNum }, (_, i) => (
+      <div
+        key={i}
+        className={`questionMapElement ${
+          currentIndex === i ? "active-question" : ""
+        }`}
+        onClick={() => setCurrentIndex(i)}
+      >
+        {questions[i] && userAnswers[questions[i].question] ? (
+          <AiFillLike style={{ transform: "scale(1.2)" }} />
+        ) : (
+          <AiFillLike fill="transparent" />
+        )}
+        question-{i + 1}
+      </div>
+    ))}
+  </div>
+</div>
 
       <div className="questions">
-        <div className="questionContainer">
+        {/* <div className="questionContainer">
           <img
             src={starEdge}
             style={{
@@ -229,10 +202,50 @@ const QuestionsPage = () => {
               right: "0",
               transform: "rotate(90deg)",
             }}
-          />
+          /> */}
 
           {questions && questions.length > 0 ? (
-            <>
+            <div className="questionContainer">
+              <img
+                src={starEdge}
+                style={{
+                  width: "1rem",
+                  position: "absolute",
+                  top: "0",
+                  left: "0",
+                  transform: "rotate(-90deg)",
+                }}
+              />
+              <img
+                src={starEdge}
+                style={{
+                  width: "1rem",
+                  position: "absolute",
+                  top: "0",
+                  right: "0",
+                }}
+              />
+              <img
+                src={starEdge}
+                style={{
+                  width: "1rem",
+                  position: "absolute",
+                  bottom: "0",
+                  left: "0",
+                  transform: "rotate(180deg)",
+                }}
+              />
+              <img
+                src={starEdge}
+                style={{
+                  width: "1rem",
+                  position: "absolute",
+                  bottom: "0",
+                  right: "0",
+                  transform: "rotate(90deg)",
+                }}
+              />
+              
               <QuestionCard
                 question={questions[currentIndex]}
                 userAnswer={userAnswers[questions[currentIndex].question]}
@@ -265,11 +278,15 @@ const QuestionsPage = () => {
                   </button>
                 </>
               )}
-            </>
+            </div>
           ) : (
-            <p>Loading questions...</p>
+            <div className="loadingScreenContainer">
+              <img src={loadingImg} alt="" className="loadingscreenImg"/>
+              <p>loading questions</p>
+            </div>
+            
           )}
-        </div>
+  
       </div>
       {questions.length > 0 ? (
         <div className="nav_n_time">
