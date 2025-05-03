@@ -10,7 +10,8 @@ import { database } from "../config/firebase";
 const ResultPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { userName, category, answers, questions, timeleft, allowedTime } =
+
+  const { userName, categoryName, questionsNum, categoryCode, answers, questions, timeleft, allowedTime } =
     location.state || {};
 
   const [displayResults, setDisplayResults] = useState(false);
@@ -63,7 +64,7 @@ const ResultPage = () => {
   useEffect(() => {
       const ResultObject = {
         userName: userName,
-        category: category,
+        category: categoryName,
         grade: grade,
         timeFactor: timeFactor,
         numberOfQuestions: questions.length,
@@ -72,7 +73,7 @@ const ResultPage = () => {
         results: results,
       };
       setResultObject(ResultObject);
-  }, [userName, grade, category, results]);
+  }, [userName, grade, categoryName, results]);
   
   const saveResult = (result)=>{
     console.log('saveResultInvoked', result)
@@ -83,10 +84,22 @@ const ResultPage = () => {
     navigate('/Leaderboard');
   };
 
+const HandleRestartRequest = ()=>{
+    navigate('/Questions',{
+      state:{
+        userName:  userName,
+        questionsNum: questionsNum,
+        categoryCode: categoryCode,
+        categoryName: categoryName,
+      }
+    });
+  };
+
   return (
     <div className="resultPage">
       <QuizResultCard Result={resultObject} saveResult={saveResult}/>
-      <button style={{}} className="Qbutton" onClick={() => setDisplayResults((prevState) => !prevState)}>
+      <button className="Qbutton" onClick={HandleRestartRequest}><div>Restart Quiz?</div></button>
+      <button className="Qbutton" onClick={() => setDisplayResults((prevState) => !prevState)}>
         {displayResults ? <div>Hide Results</div>: <div>Display Results</div>}
       </button>
       <DetailedResults results={results} displayResults={displayResults} />

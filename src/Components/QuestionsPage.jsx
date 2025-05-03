@@ -70,7 +70,9 @@ const QuestionsPage = () => {
     navigate("/Result", {
       state: {
         userName: userName,
-        category: categoryName,
+        categoryName: categoryName,
+        questionsNum: questionsNum, 
+        categoryCode: categoryCode,
         answers: userAnswers,
         questions: questions,
         timeleft: timeLeft,
