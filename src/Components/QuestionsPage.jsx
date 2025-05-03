@@ -151,59 +151,20 @@ const QuestionsPage = () => {
         }`}
         onClick={() => setCurrentIndex(i)}
       >
+      <div id="qMapElemCont">
         {questions[i] && userAnswers[questions[i].question] ? (
           <AiFillLike style={{ transform: "scale(1.2)" }} />
         ) : (
           <AiFillLike fill="transparent" />
         )}
         question-{i + 1}
+        </div>
       </div>
     ))}
   </div>
 </div>
 
       <div className="questions">
-        {/* <div className="questionContainer">
-          <img
-            src={starEdge}
-            style={{
-              width: "1rem",
-              position: "absolute",
-              top: "0",
-              left: "0",
-              transform: "rotate(-90deg)",
-            }}
-          />
-          <img
-            src={starEdge}
-            style={{
-              width: "1rem",
-              position: "absolute",
-              top: "0",
-              right: "0",
-            }}
-          />
-          <img
-            src={starEdge}
-            style={{
-              width: "1rem",
-              position: "absolute",
-              bottom: "0",
-              left: "0",
-              transform: "rotate(180deg)",
-            }}
-          />
-          <img
-            src={starEdge}
-            style={{
-              width: "1rem",
-              position: "absolute",
-              bottom: "0",
-              right: "0",
-              transform: "rotate(90deg)",
-            }}
-          /> */}
-
           {questions && questions.length > 0 ? (
             <div className="questionContainer">
               <img

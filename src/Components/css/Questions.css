@@ -114,10 +114,17 @@
   opacity: 1;
 
 }
-
+#qMapElemCont{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  width: 50%;
+  margin-left: 1rem;
+}
+/* 
 .questionMapElement>* {
   width: 15px
-}
+} */
 
 .nav_n_time {
   display: flex;
