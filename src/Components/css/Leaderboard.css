@@ -242,7 +242,9 @@ input:-webkit-autofill {
         visibility: visible;
         pointer-events: auto;
     }
-
+    .leaderboardContainer{
+        width: 100%;
+    }
 }
 
 @media (min-width: 768px) {
@@ -260,6 +262,6 @@ input:-webkit-autofill {
         /* Allows interaction when visible */
     }
     .LeaderboardResult {
-        aspect-ratio: 12.5/1;
+        aspect-ratio: 10/1;
     }
 }
