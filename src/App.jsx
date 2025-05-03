@@ -5,14 +5,16 @@ import LandingPage from "./Components/LandingPage";
 import QuestionsPage from "./Components/QuestionsPage";
 import ResultPage from "./Components/ResultPage";
 import LeaderboardPage from './Components/LeaderboardPage';
-
+import logo from './assets/logo-wp.png'
 function App() {
   return (
     <>
     <nav>
       <ul>
-        <Link className="navitem" to={{pathname:'/'}}><img style={{width:'4.5rem',height:'2.8rem'}} src='src\assets\logo-wp.png'></img></Link>
-        <Link className="navitem" to={{pathname:'/Leaderboard'}}>LeaderBoard</Link>
+        {/* <Link className="navitem" to={{pathname:'/'}}><img style={{width:'4.5rem',height:'2.8rem'}} src='src\assets\logo-wp.png'></img></Link>
+        <Link className="navitem" to={{pathname:'/Leaderboard'}}>LeaderBoard</Link> */}
+        <Link className="navitem" to='/'><img style={{width:'4.5rem',height:'2.8rem'}} src={logo}></img></Link>
+        <Link className="navitem" to='/Leaderboard'>LeaderBoard</Link>
       </ul>
     </nav>
     <Routes>
