@@ -12,7 +12,7 @@ Welcome to **Quiz Tavern**, A Website I made for trivia lovers! Gather your frie
 
 ## Live Version
 You can access the live version of **Quiz Tavern** here:
-🔗
+🔗 [Quiz Tavern on Github Pages](https://fady0118.github.io/QuizApp/)
 
 ## Local Installation
 If you want to run **Quiz Tavern** locally, follow these steps:
