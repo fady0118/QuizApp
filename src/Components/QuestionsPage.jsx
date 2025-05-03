@@ -39,7 +39,7 @@ const QuestionsPage = () => {
       try {
         const response = await fetch(apiUrl);
         const data = await response.json();
-        console.log(data.results);
+        // console.log(data.results);
         if (data.results) {
           const decodedData = decodeQuestions(data.results);
           setQuestions(decodedData);

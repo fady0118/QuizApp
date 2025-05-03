@@ -75,7 +75,7 @@ const ResultPage = () => {
   }, [userName, grade, category, results]);
   
   const saveResult = (result)=>{
-    console.log('saveResultInvoked')
+    console.log('saveResultInvoked', result)
     const resultsRef = ref(database, "results"); // "results" is the node in the database
     push(resultsRef, result)
     .then(()=>console.log('Result saved successfully'))

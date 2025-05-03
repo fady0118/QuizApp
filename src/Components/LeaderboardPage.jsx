@@ -32,7 +32,7 @@ const LeaderboardPage = () => {
           }));
           const orderedList = [...dataArray].sort((a, b) => b.grade - a.grade);
           setData(orderedList);
-          console.log(orderedList);
+          // console.log(orderedList);
         } else {
           console.log("No data available");
         }
@@ -58,7 +58,7 @@ const LeaderboardPage = () => {
       .filter((keyword) => keyword.trim() !== "");
   };
   const handleSearch = (searchString) => {
-    console.log("searchString: ", searchString);
+    // console.log("searchString: ", searchString);
     const keywords = splitKeywords(searchString);
     const olddata = data;
     if (keywords.length <= 0) {
@@ -96,28 +96,6 @@ const LeaderboardPage = () => {
     const filterstring = filterItems.toString().replaceAll(",", " ");
     handleSearch(filterstring);
   };
-
-  useEffect(() => {
-    // // clear old classes
-    // const allfilterImagesIds = [
-    //   "Art",
-    //   "Music",
-    //   "Computers",
-    //   "Mathematics",
-    //   "Anime",
-    //   "Games",
-    //   "Mythology",
-    // ];
-    // allfilterImagesIds.map((item) =>
-    //   document.getElementById(item).classList.remove("activeFilter")
-    // );
-    console.log("filterItems", filterItems);
-    // add class to filtered items
-    // filterItems.map((item) => {
-    //   document.getElementById(item).classList.add("activeFilter");
-    // });
-    filterResults(filterItems);
-  }, [filterItems]);
 
   const handleFilterPopup = () => {
     const filterPopup = document.querySelector(".filterPopup");
