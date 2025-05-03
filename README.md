@@ -1,12 +1,18 @@
-# React + Vite
+# Quiz Tavern 🍻
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Welcome to **Quiz Tavern**, A Website I made for trivia lovers! Gather your friends, test your knowledge, and compete in exciting quiz challenges, all while enjoying a fun atmosphere.  
 
-Currently, two official plugins are available:
+## Features
+- 🏆 **Multiplayer Quizzes** – Challenge friends and see who's the trivia champion.
+- 🎭 **Chill Interface** – Immerse yourself in cozy aesthetics.
+- 🔥 **Live Leaderboards** – Keep track of scores and battle for the top spot.
+- 🛠 **Custom Quiz Creation** – Make your own trivia categories.
+- 🎲 **Randomized Questions** – No two games are ever the same!
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Installation
 
-## Expanding the ESLint configuration
+To run **Quiz Tavern** locally, follow these steps:
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/your-username/quiz-tavern.git
