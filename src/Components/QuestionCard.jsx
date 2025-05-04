@@ -36,4 +36,10 @@ const QuestionCard = ({ question, userAnswer, onAnswer }) => {
   );
 };
 
-export default memo(QuestionCard);
+// export default memo(QuestionCard);
+export default memo(QuestionCard, (prevProps, nextProps) => {
+  return (
+      prevProps.question === nextProps.question && // If question hasn't changed
+      prevProps.userAnswer === nextProps.userAnswer // If user's answer hasn't changed
+  );
+});

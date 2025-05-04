@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import QuestionCard from "./QuestionCard";
 import "./css/Questions.css";
